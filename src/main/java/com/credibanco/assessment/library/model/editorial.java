@@ -75,7 +75,9 @@ public class editorial {
 		this.maximo_libros = maximo_libros;
 		this.libros_editados = libros_editados;
 	}
-	
+	public editorial() {
+		
+	}
 	
 	
 	

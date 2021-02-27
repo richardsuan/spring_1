@@ -9,7 +9,7 @@ public class dotautor implements Serializable{
 	private String  fecha_nacimiento;
 	private String lugar_nacimiento;
 	private String correo;
-	//esto se hace para hacer las relaciones 
+
 	private String  libros_escritos;
 	
 }

@@ -68,7 +68,9 @@ public class autor {
 		this.correo = correo;
 		this.libros_escritos = libros_escritos;
 	}
-	
+	public autor() {
+		
+	}
 	
 	
 	

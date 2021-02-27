@@ -78,6 +78,9 @@ public class libro {
 		this.autor_this = autor_this;
 	}
 	
+	public libro() {
+		
+	}
 	
 	
 	
