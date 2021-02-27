@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class libro {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private Long  id;
 	private String titulo;
 	private String ano;
 	private String genero;
@@ -21,15 +21,15 @@ public class libro {
 	
 	//esto se hace para hacer las relaciones 
 	@ManyToOne
-	@JoinColumn(name ="editorial_id")
+	@JoinColumn(name ="id_editorial_this")
 	private editorial  editorial_this;
 	@ManyToOne
-	@JoinColumn(name ="autor_id")
+	@JoinColumn(name ="id_autor_this")
 	private autor  autor_this;
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getTitulo() {
@@ -77,6 +77,7 @@ public class libro {
 		this.editorial_this = editorial_this;
 		this.autor_this = autor_this;
 	}
+	
 	
 	
 	

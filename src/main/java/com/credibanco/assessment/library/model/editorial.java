@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -11,18 +13,20 @@ import javax.persistence.Table;
 public class editorial {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private Long  id;
 	private String nombre;
 	private String direccion_correspondencia;
 	private String telefono;
 	private String correo;
 	private int maximo_libros;
 	//esto se hace para hacer las relaciones 
+	@ManyToOne
+	@JoinColumn(name="id_libros_editados")
 	private libro  libros_editados;
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getNombre() {
@@ -71,6 +75,7 @@ public class editorial {
 		this.maximo_libros = maximo_libros;
 		this.libros_editados = libros_editados;
 	}
+	
 	
 	
 	
