@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -12,17 +14,19 @@ import javax.persistence.Table;
 public class autor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private Long  id;
 	private String nombre;
 	private String  fecha_nacimiento;
 	private String lugar_nacimiento;
 	private String correo;
 	//esto se hace para hacer las relaciones 
+	@ManyToOne
+	@JoinColumn(name="id_libros_escritos")
 	private libro  libros_escritos;
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getNombre() {
@@ -63,6 +67,9 @@ public class autor {
 		this.lugar_nacimiento = lugar_nacimiento;
 		this.correo = correo;
 		this.libros_escritos = libros_escritos;
+	}
+	public autor() {
+		
 	}
 	
 	
