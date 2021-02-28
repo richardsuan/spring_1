@@ -12,13 +12,16 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.credibanco.assessment.library.model.autor;
+import com.credibanco.assessment.library.model.editorial;
 import com.credibanco.assessment.library.model.libro;
 import com.credibanco.assessment.library.repository.libro_rep;
+import com.credibanco.assessment.library.service.impl.LibroRest;
 
 @Service
 public class libro_servi implements libro_rep {
 	@Autowired
 	private libro_rep Libro_rep;
+	
 	public List<libro> findbookAutor (Long id){
 		List<libro> t_libros =Libro_rep.findAll();
 		List<libro> libros =new ArrayList<>();
@@ -49,6 +52,7 @@ public class libro_servi implements libro_rep {
 		
 	}
 	
+	
 	public String findbookeditorialstring (Long id_editorial){
 		String libros =" ";
 		
@@ -67,6 +71,7 @@ public class libro_servi implements libro_rep {
 		return libros;
 		
 	}
+	
 	
 	public int findbookeditorialint (Long id_editorial){
 		int libros =0;
@@ -99,7 +104,20 @@ public class libro_servi implements libro_rep {
 		// TODO Auto-generated method stub
 		return Libro_rep.findAll(sort);
 	}
-	
+	public List<libro> findAllByName(String nombre) {
+		// TODO Auto-generated method stub
+		List<libro> libros =Libro_rep.findAll();
+		List<libro> libro_salida =new ArrayList<>();
+		int contador=0;
+		for(contador=0;contador<libros.size();contador++) {
+			//System.out.println("Esto sale en pantalla\n"+autores.get(contador).getNombre());
+			if(libros.get(contador).getTitulo().contains(nombre)) {
+				libro_salida.add(libros.get(contador));
+			}
+		}
+				
+		return libros;
+	}
 	
 
 	@Override
@@ -171,7 +189,7 @@ public class libro_servi implements libro_rep {
 	@Override
 	public Optional<libro> findById(Long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return Libro_rep.findById(id);
 	}
 
 	@Override
@@ -189,7 +207,7 @@ public class libro_servi implements libro_rep {
 	@Override
 	public void deleteById(Long id) {
 		// TODO Auto-generated method stub
-		
+		Libro_rep.deleteById(id);
 	}
 
 	@Override

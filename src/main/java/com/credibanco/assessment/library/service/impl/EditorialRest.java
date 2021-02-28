@@ -42,7 +42,7 @@ public class EditorialRest {
 	@GetMapping
 	private ResponseEntity<List<doteditorial>> getoneEditorial(@RequestBody editorial Editorial_busqueda){
 		//List<autor> Autor =new ArrayList<>();
-		System.out.println("hicieron get en /autor/buscar/");
+		
 		doteditorial dot_editoriales = new doteditorial();
 
 		return ResponseEntity.ok(dot_editoriales.creardot(Editorial_busqueda, Editorial_servi, Libro_servi));//cambiar

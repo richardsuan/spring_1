@@ -35,6 +35,25 @@ public class editorial_servi implements editorial_rep {
 		return editorial_salida;
 	}
 	
+	public String findEditorialstring (Long id_libro){
+		String editorial =" ";
+		
+		List<editorial> t_editoriales=Editorial_rep.findAll();
+		
+		
+		int contador=0;
+		for (contador=0;contador<t_editoriales.size();contador++) {
+			if(t_editoriales.get(contador).getId()==id_libro) {
+					
+				editorial=editorial+" "+t_editoriales.get(contador).getNombre();
+				
+			}
+		}
+		
+		return editorial;
+		
+	}
+	
 	@Override
 	public List<editorial> findAll() {
 		// TODO Auto-generated method stub

@@ -12,6 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.credibanco.assessment.library.model.autor;
+import com.credibanco.assessment.library.model.libro;
 import com.credibanco.assessment.library.repository.autor_rep;
 
 @Service
@@ -35,7 +36,24 @@ public class autor_servi  implements autor_rep{
 				
 		return autor_salida;
 	}
-	
+	public String findAutorstring (Long id_libro){
+		String autor =" ";
+		
+		List<autor> t_autores =Autor_rep.findAll();
+		
+		
+		int contador=0;
+		for (contador=0;contador<t_autores.size();contador++) {
+			if(t_autores.get(contador).getId()==id_libro) {
+					
+				autor=autor+" "+t_autores.get(contador).getNombre();
+				
+			}
+		}
+		
+		return autor;
+		
+	}
 	@Override
 	public List<autor> findAll() {
 		// TODO Auto-generated method stub
