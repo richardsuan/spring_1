@@ -42,6 +42,24 @@ public class libro_servi implements libro_rep {
 		}
 		return libros;
 	}
+	public String findbookAutorstring (Long id_autor){
+		String libros =" ";
+		
+		List<libro> t_libros =Libro_rep.findAll();
+		
+		
+		int contador=0;
+		for (contador=0;contador<t_libros.size();contador++) {
+			if(t_libros.get(contador).getId()==id_autor) {
+					System.out.print("metodo "+t_libros.get(contador).getTitulo());
+					libros=libros+" "+t_libros.get(contador).getTitulo();
+				
+			}
+		}
+		
+		return libros;
+		
+	}
 	
 /*
  * public List<autor> findAllByName(String nombre) {

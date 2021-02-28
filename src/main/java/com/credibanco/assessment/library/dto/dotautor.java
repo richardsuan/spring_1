@@ -1,6 +1,10 @@
 package com.credibanco.assessment.library.dto;
 import java.io.Serializable;
-
+import java.util.ArrayList;
+import java.util.List;
+import com.credibanco.assessment.library.services.autor_servi;
+import com.credibanco.assessment.library.services.libro_servi;
+import com.credibanco.assessment.library.model.autor;
 import com.credibanco.assessment.library.model.libro;
 public class dotautor implements Serializable{
 	
@@ -9,13 +13,42 @@ public class dotautor implements Serializable{
 	private String  fecha_nacimiento;
 	private String lugar_nacimiento;
 	private String correo;
-
 	private String  libros_escritos;
 	
+	public List<dotautor> creardot(autor autor_busqueda,autor_servi Autor_servi,libro_servi Libro_servi  ) {
+		
+		List<dotautor> Autor =new ArrayList<>();
+		List<autor> Autores_semejantes =new ArrayList<>();
+		if(autor_busqueda!=null) {
+			Autores_semejantes.addAll(Autor_servi.findAllByName(autor_busqueda.getNombre()));
+		}else {
+			Autores_semejantes.addAll(Autor_servi.findAll());
+		}
+		//Autor.addAll(  Autor_servi.findAllByName(Autor_2.getNombre()));
+		int contador=0;
+		for (contador =0;contador<Autores_semejantes.size();contador++) {
+			
+			dotautor dot = new dotautor();
+			dot.setNombre(Autores_semejantes.get(contador).getNombre());
+			dot.setCorreo(Autores_semejantes.get(contador).getCorreo());
+			dot.setLugar_nacimiento(Autores_semejantes.get(contador).getLugar_nacimiento());
+			dot.setFecha_nacimiento(Autores_semejantes.get(contador).getFecha_nacimiento());
+			Libro_servi.findAll();
+			if(Libro_servi != null) {
+				System.out.print(Libro_servi.findbookAutorstring(Autores_semejantes.get(contador).getId()));
+				System.out.print("if");
+				dot.setLibros_escritos(Libro_servi.findbookAutorstring(Autores_semejantes.get(contador).getId()));
+			}else {
+				System.out.print("else");
+			}
+			Autor.add(dot);
+		}
+		return Autor;
+	}
 	public dotautor() {//constructor vacio
 		
 	}
-
+	
 	public dotautor(String nombre, String fecha_nacimiento, String lugar_nacimiento, String correo,
 			String libros_escritos) {
 		super();

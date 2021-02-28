@@ -116,7 +116,7 @@ public class autor_servi  implements autor_rep{
 	@Override
 	public Optional<autor> findById(Long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return Autor_rep.findById(id);
 	}
 
 	@Override
@@ -134,7 +134,7 @@ public class autor_servi  implements autor_rep{
 	@Override
 	public void deleteById(Long id) {
 		// TODO Auto-generated method stub
-		
+		Autor_rep.deleteById(id);
 	}
 
 	@Override
