@@ -1,5 +1,6 @@
 package com.credibanco.assessment.library.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,6 +35,22 @@ public class autor_servi  implements autor_rep{
 	public List<autor> findAllById(Iterable<Long> ids) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+
+	public List<autor> findAllByName(String nombre) {
+		// TODO Auto-generated method stub
+		List<autor> autores =Autor_rep.findAll();
+		List<autor> autor_salida =new ArrayList<>();
+		int contador=0;
+		for(contador=0;contador<autores.size();contador++) {
+			//System.out.println("Esto sale en pantalla\n"+autores.get(contador).getNombre());
+			if(autores.get(contador).getNombre().contains(nombre)) {
+				autor_salida.add(autores.get(contador));
+			}
+		}
+				
+		return autor_salida;
 	}
 
 	@Override
@@ -99,7 +116,7 @@ public class autor_servi  implements autor_rep{
 	@Override
 	public Optional<autor> findById(Long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return Autor_rep.findById(id);
 	}
 
 	@Override
@@ -117,7 +134,7 @@ public class autor_servi  implements autor_rep{
 	@Override
 	public void deleteById(Long id) {
 		// TODO Auto-generated method stub
-		
+		Autor_rep.deleteById(id);
 	}
 
 	@Override

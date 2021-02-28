@@ -1,5 +1,6 @@
 package com.credibanco.assessment.library.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.credibanco.assessment.library.model.autor;
 import com.credibanco.assessment.library.model.libro;
 import com.credibanco.assessment.library.repository.libro_rep;
 
@@ -29,7 +31,53 @@ public class libro_servi implements libro_rep {
 		// TODO Auto-generated method stub
 		return Libro_rep.findAll(sort);
 	}
+	public List<libro> findbookAutor (Long id){
+		List<libro> t_libros =Libro_rep.findAll();
+		List<libro> libros =new ArrayList<>();
+		int contador=0;
+		for (contador=0;contador<t_libros.size();contador++) {
+			if(t_libros.get(contador).getId()==id) {
+				libros.add(t_libros.get(contador));
+			}
+		}
+		return libros;
+	}
+	public String findbookAutorstring (Long id_autor){
+		String libros =" ";
+		
+		List<libro> t_libros =Libro_rep.findAll();
+		
+		
+		int contador=0;
+		for (contador=0;contador<t_libros.size();contador++) {
+			if(t_libros.get(contador).getId()==id_autor) {
+					System.out.print("metodo "+t_libros.get(contador).getTitulo());
+					libros=libros+" "+t_libros.get(contador).getTitulo();
+				
+			}
+		}
+		
+		return libros;
+		
+	}
+	
+/*
+ * public List<autor> findAllByName(String nombre) {
+		// TODO Auto-generated method stub
+		List<libro> t_libros =Libro_rep.findAll();
+		List<libro> libros =new ArrayList<>();
+		int contador=0;
+		for(contador=0;contador<();contador++) {
+			//System.out.println("Esto sale en pantalla\n"+autores.get(contador).getNombre());
+			if(.get(contador).getNombre().contains(nombre)) {
+				.add(.get(contador));
+			}
+		}
+				
+		return ;
+	}
 
+ */
 	@Override
 	public List<libro> findAllById(Iterable<Long> ids) {
 		// TODO Auto-generated method stub
