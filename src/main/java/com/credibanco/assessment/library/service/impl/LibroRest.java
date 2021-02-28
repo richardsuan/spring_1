@@ -39,7 +39,7 @@ public class LibroRest {
 		
 		try {
 			Libro.setTitulo(Libro.getTitulo().toUpperCase());
-			//Libro.setAutor_this((Long)Libro.getAutor_this());
+			//Libro.setAutor_this(Libro.getAutor_this().getId());
 			libro Autorguardado = Libro_servi.save(Libro);
 			System.out.println("hicieron post");
 			

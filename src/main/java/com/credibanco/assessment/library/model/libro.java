@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table (name="libro")
+@Table (name="Libro")
 public class libro {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,69 +18,90 @@ public class libro {
 	private String ano;
 	private String genero;
 	private  int paginas;
+	private Long  my_autor;
+	private Long  my_editorial;
+	//esto se hace para hacer las relaciones 	
 	
-	//esto se hace para hacer las relaciones 
-	@ManyToOne
-	@JoinColumn(name ="id_editorial_this")
-	private editorial  editorial_this;
-	@ManyToOne
-	@JoinColumn(name ="id_autor_this")
-	private autor  autor_this;
+/*
+    @ManyToOne()
+    @JoinColumn(name = "autor_id")
+    private autor my_autor;
+	
+
+    @ManyToOne()
+    @JoinColumn(name = "editorial_id")
+    private editorial my_editorial;
+  */  
+	public libro() {
+		
+	}
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getTitulo() {
 		return titulo;
 	}
+
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
+
 	public String getAno() {
 		return ano;
 	}
+
 	public void setAno(String ano) {
 		this.ano = ano;
 	}
+
 	public String getGenero() {
 		return genero;
 	}
+
 	public void setGenero(String genero) {
 		this.genero = genero;
 	}
+
 	public int getPaginas() {
 		return paginas;
 	}
+
 	public void setPaginas(int paginas) {
 		this.paginas = paginas;
 	}
-	public editorial getEditorial_this() {
-		return editorial_this;
+
+	public Long getMy_autor() {
+		return my_autor;
 	}
-	public void setEditorial_this(editorial editorial_this) {
-		this.editorial_this = editorial_this;
+
+	public void setMy_autor(Long my_autor) {
+		this.my_autor = my_autor;
 	}
-	public autor getAutor_this() {
-		return autor_this;
+
+	public Long getMy_editorial() {
+		return my_editorial;
 	}
-	public void setAutor_this(autor autor_this) {
-		this.autor_this = autor_this;
+
+	public void setMy_editorial(Long my_editorial) {
+		this.my_editorial = my_editorial;
 	}
-	public libro(String titulo, String ano, String genero, int paginas, editorial editorial_this, autor autor_this) {
+
+	public libro(String titulo, String ano, String genero, int paginas, Long my_autor, Long my_editorial) {
 		super();
 		this.titulo = titulo;
 		this.ano = ano;
 		this.genero = genero;
 		this.paginas = paginas;
-		this.editorial_this = editorial_this;
-		this.autor_this = autor_this;
+		this.my_autor = my_autor;
+		this.my_editorial = my_editorial;
 	}
-	
-	public libro() {
-		
-	}
+
 	
 	
 	

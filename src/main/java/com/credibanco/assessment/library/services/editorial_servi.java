@@ -1,5 +1,6 @@
 package com.credibanco.assessment.library.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.credibanco.assessment.library.model.autor;
 import com.credibanco.assessment.library.model.editorial;
 import com.credibanco.assessment.library.repository.editorial_rep;
 
@@ -18,6 +20,21 @@ public class editorial_servi implements editorial_rep {
 	@Autowired
 	private editorial_rep Editorial_rep;
 
+	public List<editorial> findAllByName(String nombre) {
+		// TODO Auto-generated method stub
+		List<editorial> editoriales =Editorial_rep.findAll();
+		List<editorial> editorial_salida =new ArrayList<>();
+		int contador=0;
+		for(contador=0;contador<editoriales.size();contador++) {
+			//System.out.println("Esto sale en pantalla\n"+autores.get(contador).getNombre());
+			if(editoriales.get(contador).getNombre().contains(nombre)) {
+				editorial_salida.add(editoriales.get(contador));
+			}
+		}
+				
+		return editorial_salida;
+	}
+	
 	@Override
 	public List<editorial> findAll() {
 		// TODO Auto-generated method stub
@@ -27,7 +44,7 @@ public class editorial_servi implements editorial_rep {
 	@Override
 	public List<editorial> findAll(Sort sort) {
 		// TODO Auto-generated method stub
-		return Editorial_rep.findAll(sort);
+		return null;
 	}
 
 	@Override
@@ -99,7 +116,7 @@ public class editorial_servi implements editorial_rep {
 	@Override
 	public Optional<editorial> findById(Long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return Editorial_rep.findById(id);
 	}
 
 	@Override
@@ -117,7 +134,7 @@ public class editorial_servi implements editorial_rep {
 	@Override
 	public void deleteById(Long id) {
 		// TODO Auto-generated method stub
-		
+		Editorial_rep.deleteById(id);
 	}
 
 	@Override
@@ -161,5 +178,7 @@ public class editorial_servi implements editorial_rep {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	
 
 }

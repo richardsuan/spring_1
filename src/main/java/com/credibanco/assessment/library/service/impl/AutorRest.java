@@ -44,10 +44,9 @@ public class AutorRest {
 	@GetMapping
 	private ResponseEntity<List<dotautor>> getoneAutor(@RequestBody autor Autor_busqueda){
 		//List<autor> Autor =new ArrayList<>();
+		System.out.println("hicieron get en /autor/buscar/");
 		dotautor autor_salida = new dotautor();
-		
-		//System.out.println(Autor_2.getNombre()+" "+Autor_2.getCorreo());
-		
+
 		return ResponseEntity.ok(autor_salida.creardot(Autor_busqueda,Autor_servi,Libro_servi));//cambiar
 		//return ResponseEntity.ok(dot);
 		

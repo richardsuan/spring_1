@@ -19,24 +19,12 @@ import com.credibanco.assessment.library.repository.libro_rep;
 public class libro_servi implements libro_rep {
 	@Autowired
 	private libro_rep Libro_rep;
-
-	@Override
-	public List<libro> findAll() {
-		// TODO Auto-generated method stub
-		return Libro_rep.findAll();
-	}
-
-	@Override
-	public List<libro> findAll(Sort sort) {
-		// TODO Auto-generated method stub
-		return Libro_rep.findAll(sort);
-	}
 	public List<libro> findbookAutor (Long id){
 		List<libro> t_libros =Libro_rep.findAll();
 		List<libro> libros =new ArrayList<>();
 		int contador=0;
 		for (contador=0;contador<t_libros.size();contador++) {
-			if(t_libros.get(contador).getId()==id) {
+			if(t_libros.get(contador).getMy_autor()==id) {
 				libros.add(t_libros.get(contador));
 			}
 		}
@@ -50,8 +38,8 @@ public class libro_servi implements libro_rep {
 		
 		int contador=0;
 		for (contador=0;contador<t_libros.size();contador++) {
-			if(t_libros.get(contador).getId()==id_autor) {
-					System.out.print("metodo "+t_libros.get(contador).getTitulo());
+			if(t_libros.get(contador).getMy_autor()==id_autor) {
+					
 					libros=libros+" "+t_libros.get(contador).getTitulo();
 				
 			}
@@ -61,23 +49,59 @@ public class libro_servi implements libro_rep {
 		
 	}
 	
-/*
- * public List<autor> findAllByName(String nombre) {
-		// TODO Auto-generated method stub
+	public String findbookeditorialstring (Long id_editorial){
+		String libros =" ";
+		
 		List<libro> t_libros =Libro_rep.findAll();
-		List<libro> libros =new ArrayList<>();
+		
+		
 		int contador=0;
-		for(contador=0;contador<();contador++) {
-			//System.out.println("Esto sale en pantalla\n"+autores.get(contador).getNombre());
-			if(.get(contador).getNombre().contains(nombre)) {
-				.add(.get(contador));
+		for (contador=0;contador<t_libros.size();contador++) {
+			if(t_libros.get(contador).getMy_editorial()==id_editorial) {
+					
+					libros=libros+" "+t_libros.get(contador).getTitulo();
+				
 			}
 		}
+		
+		return libros;
+		
+	}
+	
+	public int findbookeditorialint (Long id_editorial){
+		int libros =0;
+		
+		List<libro> t_libros =Libro_rep.findAll();
+		
+		
+		int contador=0;
+		for (contador=0;contador<t_libros.size();contador++) {
+			if(t_libros.get(contador).getMy_editorial()==id_editorial) {
+					
+					libros=libros+1;
 				
-		return ;
+			}
+		}
+		
+		return libros;
+		
+	}
+	
+	
+	@Override
+	public List<libro> findAll() {
+		// TODO Auto-generated method stub
+		return Libro_rep.findAll();
 	}
 
- */
+	@Override
+	public List<libro> findAll(Sort sort) {
+		// TODO Auto-generated method stub
+		return Libro_rep.findAll(sort);
+	}
+	
+	
+
 	@Override
 	public List<libro> findAllById(Iterable<Long> ids) {
 		// TODO Auto-generated method stub
