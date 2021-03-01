@@ -1,39 +1,40 @@
 <p>librocontrol works!</p>
 
 <div class="formulario">
-  <form [formGroup] ="autorForm" (ngSubmit)="guardar()">
+  <form [formGroup] ="libroForm" (ngSubmit)="guardar()">
     
 
     <div class="form-group">
-      <label>Nombre completo</label>
-      <input type="text" formControlName="nombre" class="form-control">
+      <label>Titulo</label>
+      <input type="text" formControlName="titulo" class="form-control">
+    </div>
+
+    
+    <div class="form-group">
+      <label>Año</label>
+      <input type="date" max="2021-03-01"  formControlName="ano" class="form-control">
     </div>
 
     <div class="form-group">
-      <label>Documento de identidad</label>
-      <input type="text" formControlName="d_identidad" class="form-control">
+      <label>Genero </label>
+      <input type="text" formControlName="genero" class="form-control">
     </div>
 
     <div class="form-group">
-      <label>Fecha de nacimiento</label>
-      <input type="date" max="2006-01-01" min ="1921-01-01" formControlName="fecha_nacimiento" class="form-control">
+      <label>paginas</label>
+      <input type="text" formControlName="paginas" class="form-control">
     </div>
 
     <div class="form-group">
-      <label>Pais</label>
-      <input type="text" formControlName="pais" class="form-control">
+      <label>Id del autor</label>
+      <input type="text" formControlName="my_autor" class="form-control">
     </div>
 
     <div class="form-group">
-      <label>Lugar de nacimiento</label>
-      <input type="text" formControlName="lugar_nacimiento" class="form-control">
+      <label>Id de la editorial</label>
+      <input type="text" formControlName="my_editorial" class="form-control">
     </div>
-
-    <div class="form-group">
-      <label>Correo</label>
-      <input type="email" formControlName="correo" class="form-control">
-    </div>
-
+    
     
     <button type="submit" class="btn btn-primary" >Guardar</button>
     
@@ -41,9 +42,9 @@
 </div>
 
 <div class="formulario">
-  <form [formGroup] ="autorForm" (ngSubmit)="buscarAutor()">
+  <form [formGroup] ="libroForm" (ngSubmit)="buscarLibro()">
     <div class="form-group">
-      <label>Buscar autor</label>
+      <label>Buscar libro</label>
       <input type="text" formControlName="nombre" class="form-control">
     </div>
 
