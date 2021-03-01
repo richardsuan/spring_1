@@ -18,8 +18,7 @@ export class LibrocontrolComponent implements OnInit {
 
   ngOnInit(): void {
     this.libroForm = this.fb.group({
-      titulo : ['', Validators.required],
-      
+      titulo : ['', Validators.required],      
       ano : ['', Validators.required],
       genero : ['', Validators.required],
       paginas : ['', Validators.required],

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AutorService } from 'src/app/services/autor/autor.service';
+
 @Component({
   selector: 'app-autorcontrol',
   templateUrl: './autorcontrol.component.html',
@@ -9,6 +10,8 @@ import { AutorService } from 'src/app/services/autor/autor.service';
 export class AutorcontrolComponent implements OnInit {
 
   autorForm!: FormGroup;
+  persona: any;
+  totalAngularPackages: any;
   constructor(
     public fb: FormBuilder,
     public autorService:AutorService
@@ -35,10 +38,14 @@ export class AutorcontrolComponent implements OnInit {
     )
   }
   buscarAutor(): void {
-    this.autorService.getsimilarAutor(this.autorForm.value).subscribe(resp => {
+    //Headers:
+    this.autorService.getsimilarAutor(this.autorForm.get("nombre")?.value).subscribe(resp => {
+    this.persona=resp;
     //this.autorForm.reset();
    // this.personas=this.personas.filter(persona=> resp.id!==persona.id);
     //this.personas.push(resp);
+    //this.totalAngularPackages = resp.total;
+    console.log(resp);
   },
     error => { console.error(error) }
   )

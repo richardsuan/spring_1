@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -40,9 +41,9 @@ public class AutorRest {
 		
 	}
 	
-	@RequestMapping("/autor/buscar/")//buscar por nombre 
+	@RequestMapping(value="/autor/buscar/{Autor_busqueda}")//buscar por nombre 
 	@GetMapping
-	private ResponseEntity<List<dotautor>> getoneAutor(@RequestBody autor Autor_busqueda){
+	private ResponseEntity<List<dotautor>> getoneAutor(@PathVariable String Autor_busqueda){
 		//List<autor> Autor =new ArrayList<>();
 		System.out.println("hicieron get en /autor/buscar/");
 		dotautor autor_salida = new dotautor();

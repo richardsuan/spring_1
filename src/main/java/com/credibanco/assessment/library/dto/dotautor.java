@@ -15,13 +15,13 @@ public class dotautor implements Serializable{
 	private String correo;
 	private String  libros_escritos;
 	
-	public List<dotautor> creardot(autor autor_busqueda,autor_servi Autor_servi,libro_servi Libro_servi  ) {
+	public List<dotautor> creardot(String autor_busqueda,autor_servi Autor_servi,libro_servi Libro_servi  ) {
 		System.out.print("dot");
 		List<dotautor> Autor =new ArrayList<>();
 		List<autor> Autores_semejantes =new ArrayList<>();
 		if(autor_busqueda!=null) {
-			autor_busqueda.setNombre(autor_busqueda.getNombre().toUpperCase());//se pone en mayuscula para evitar problemas con la busqueda
-			Autores_semejantes.addAll(Autor_servi.findAllByName(autor_busqueda.getNombre()));
+			
+			Autores_semejantes.addAll(Autor_servi.findAllByName(autor_busqueda.toUpperCase()));
 		}else {
 			Autores_semejantes.addAll(Autor_servi.findAll());//esto se hace para pedir todos los autores
 		}
