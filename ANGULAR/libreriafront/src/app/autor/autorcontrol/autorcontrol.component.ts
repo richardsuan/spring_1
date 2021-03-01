@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { AutorService } from 'src/app/services/autor/autor.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { AutorService } from 'src/app/services/autor/autor.service';
 @Component({
-  selector: 'app-librocontrol',
-  templateUrl: './librocontrol.component.html',
-  styleUrls: ['./librocontrol.component.css']
+  selector: 'app-autorcontrol',
+  templateUrl: './autorcontrol.component.html',
+  styleUrls: ['./autorcontrol.component.css']
 })
-export class LibrocontrolComponent implements OnInit {
-  //libro
+export class AutorcontrolComponent implements OnInit {
+
   autorForm!: FormGroup;
   constructor(
     public fb: FormBuilder,

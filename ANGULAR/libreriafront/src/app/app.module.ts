@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { LibroModule } from './libro/libro.module';
 import { EditorialModule } from './editorial/editorial.module';
+import { AutorModule } from './autor/autor.module';
 
 //import { EditorialcontrolComponent } from './editorial/editorialcontrol/editorialcontrol.component';   EditorialcontrolComponent
 
@@ -25,8 +26,10 @@ import { EditorialModule } from './editorial/editorial.module';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    
     LibroModule ,
-    EditorialModule
+    EditorialModule,
+    AutorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
