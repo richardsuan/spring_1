@@ -16,31 +16,26 @@ public class dotautor implements Serializable{
 	private String  libros_escritos;
 	
 	public List<dotautor> creardot(autor autor_busqueda,autor_servi Autor_servi,libro_servi Libro_servi  ) {
-		
+		System.out.print("dot");
 		List<dotautor> Autor =new ArrayList<>();
 		List<autor> Autores_semejantes =new ArrayList<>();
 		if(autor_busqueda!=null) {
+			autor_busqueda.setNombre(autor_busqueda.getNombre().toUpperCase());//se pone en mayuscula para evitar problemas con la busqueda
 			Autores_semejantes.addAll(Autor_servi.findAllByName(autor_busqueda.getNombre()));
 		}else {
-			Autores_semejantes.addAll(Autor_servi.findAll());
+			Autores_semejantes.addAll(Autor_servi.findAll());//esto se hace para pedir todos los autores
 		}
 		//Autor.addAll(  Autor_servi.findAllByName(Autor_2.getNombre()));
 		int contador=0;
 		for (contador =0;contador<Autores_semejantes.size();contador++) {
-			
+			//System.out.print(" \n FOR /n");
 			dotautor dot = new dotautor();
-			dot.setNombre(Autores_semejantes.get(contador).getNombre());
-			dot.setCorreo(Autores_semejantes.get(contador).getCorreo());
-			dot.setLugar_nacimiento(Autores_semejantes.get(contador).getLugar_nacimiento());
+			dot.setNombre(Autores_semejantes.get(contador).getNombre().toUpperCase());
+			dot.setCorreo(Autores_semejantes.get(contador).getCorreo().toLowerCase());
+			dot.setLugar_nacimiento(Autores_semejantes.get(contador).getLugar_nacimiento().toUpperCase());
 			dot.setFecha_nacimiento(Autores_semejantes.get(contador).getFecha_nacimiento());
-			Libro_servi.findAll();
-			if(Libro_servi != null) {
-				System.out.print(Libro_servi.findbookAutorstring(Autores_semejantes.get(contador).getId()));
-				System.out.print("if");
-				dot.setLibros_escritos(Libro_servi.findbookAutorstring(Autores_semejantes.get(contador).getId()));
-			}else {
-				System.out.print("else");
-			}
+			
+			dot.setLibros_escritos(Libro_servi.findbookAutorstring(Autores_semejantes.get(contador).getId()));
 			Autor.add(dot);
 		}
 		return Autor;

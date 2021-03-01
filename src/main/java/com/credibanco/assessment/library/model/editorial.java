@@ -1,15 +1,19 @@
 package com.credibanco.assessment.library.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table (name="editorial")
+@Table (name="Editorial")
 public class editorial {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,10 +23,6 @@ public class editorial {
 	private String telefono;
 	private String correo;
 	private int maximo_libros;
-	//esto se hace para hacer las relaciones 
-	@ManyToOne
-	@JoinColumn(name="id_libros_editados")
-	private libro  libros_editados;
 	public Long getId() {
 		return id;
 	}
@@ -59,25 +59,28 @@ public class editorial {
 	public void setMaximo_libros(int maximo_libros) {
 		this.maximo_libros = maximo_libros;
 	}
-	public libro getLibros_editados() {
-		return libros_editados;
-	}
-	public void setLibros_editados(libro libros_editados) {
-		this.libros_editados = libros_editados;
-	}
-	public editorial(String nombre, String direccion_correspondencia, String telefono, String correo, int maximo_libros,
-			libro libros_editados) {
+	public editorial(String nombre, String direccion_correspondencia, String telefono, String correo,
+			int maximo_libros) {
 		super();
 		this.nombre = nombre;
 		this.direccion_correspondencia = direccion_correspondencia;
 		this.telefono = telefono;
 		this.correo = correo;
 		this.maximo_libros = maximo_libros;
-		this.libros_editados = libros_editados;
 	}
 	public editorial() {
 		
 	}
+	//esto se hace para hacer las relaciones 
+	/*
+	@ManyToOne
+	@JoinColumn(name="id_libros_editados")
+	private libro  libros_editados;*/
+	
+	
+
+	
+	
 	
 	
 	
