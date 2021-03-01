@@ -8,10 +8,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 import { LibroModule } from './libro/libro.module';
+import { EditorialModule } from './editorial/editorial.module';
+
+//import { EditorialcontrolComponent } from './editorial/editorialcontrol/editorialcontrol.component';   EditorialcontrolComponent
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+  
     
   ],
   imports: [
@@ -21,7 +25,8 @@ import { LibroModule } from './libro/libro.module';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    LibroModule 
+    LibroModule ,
+    EditorialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

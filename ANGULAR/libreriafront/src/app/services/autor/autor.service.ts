@@ -16,12 +16,13 @@ export class AutorService {
   }
 
   public saveAutor (autor:any): Observable<any>{//guarda un autor
+    console.log(autor);
     return this.httpClient.post(this.API_SERVER+"autor/agregar/",autor);
   }
   public getsimilarAutor (autor:any): Observable<any>{//guarda un autor
-    console.log(JSON.stringify(autor));
+    console.log(autor);
     //var jsonString = JSON.stringify(autor)
-    return this.httpClient.get(this.API_SERVER+"autor/buscar/",(autor));
+    return this.httpClient.get(this.API_SERVER+"autor/buscar/",autor);
   }
 /*
   public deletePersona(id):Observable<any>{//borra un autor

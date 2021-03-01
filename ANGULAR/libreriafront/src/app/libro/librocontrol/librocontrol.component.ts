@@ -34,5 +34,14 @@ export class LibrocontrolComponent implements OnInit {
       error => { console.error(error) }
     )
   }
+  buscarAutor(): void {
+    this.autorService.getsimilarAutor(this.autorForm.value).subscribe(resp => {
+    //this.autorForm.reset();
+   // this.personas=this.personas.filter(persona=> resp.id!==persona.id);
+    //this.personas.push(resp);
+  },
+    error => { console.error(error) }
+  )
+}
 
 }
