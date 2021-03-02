@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LibroModule } from './libro/libro.module';
 import { EditorialModule } from './editorial/editorial.module';
 import { AutorModule } from './autor/autor.module';
+import { InicioModule } from './inicio/inicio.module';
 
 //import { EditorialcontrolComponent } from './editorial/editorialcontrol/editorialcontrol.component';   EditorialcontrolComponent
 
@@ -29,7 +30,8 @@ import { AutorModule } from './autor/autor.module';
     
     LibroModule ,
     EditorialModule,
-    AutorModule
+    AutorModule,
+    InicioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

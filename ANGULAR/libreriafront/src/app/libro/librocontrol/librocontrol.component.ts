@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+//import { title } from 'process';
 import { LibroService } from 'src/app/services/libro/libro.service';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-librocontrol',
   templateUrl: './librocontrol.component.html',
@@ -13,6 +14,7 @@ export class LibrocontrolComponent implements OnInit {
   libro:any;
   libros:any;
   libroForm!: FormGroup;
+ // const swal = require('sweetalert2');
   constructor(
     public fb: FormBuilder,
     public libroService:LibroService
@@ -35,14 +37,19 @@ export class LibrocontrolComponent implements OnInit {
       error => { console.error(error) }
     );
   }
-  guardar(): void {
-      this.libroService.saveLibro(this.libroForm.value).subscribe(resp => {
-      this.libroForm.reset();
-     // this.personas=this.personas.filter(persona=> resp.id!==persona.id);
-      this.libros.push(resp);
-    },
-      error => { console.error(error) }
-    )
+  guardar(): void {    
+     if(this.libroForm.valid){ 
+        this.libroService.saveLibro(this.libroForm.value).subscribe(resp => {
+        this.libroForm.reset();
+      // this.personas=this.personas.filter(persona=> resp.id!==persona.id);
+        this.libros.push(resp);
+      },
+        error => { console.error(error) }
+      )
+    }else{
+      console.log("no es valido");
+     
+    }
   }
   buscarLibro(): void {
     this.libroService.getsimilarLibro(this.libroForm.get("titulo")?.value).subscribe(resp => {
