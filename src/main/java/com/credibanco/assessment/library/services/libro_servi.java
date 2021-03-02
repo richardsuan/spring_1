@@ -104,19 +104,19 @@ public class libro_servi implements libro_rep {
 		// TODO Auto-generated method stub
 		return Libro_rep.findAll(sort);
 	}
-	public List<libro> findAllByName(String nombre) {
+	public List<libro> findAllByName(String titulo) {
 		// TODO Auto-generated method stub
 		List<libro> libros =Libro_rep.findAll();
 		List<libro> libro_salida =new ArrayList<>();
 		int contador=0;
 		for(contador=0;contador<libros.size();contador++) {
 			//System.out.println("Esto sale en pantalla\n"+autores.get(contador).getNombre());
-			if(libros.get(contador).getTitulo().contains(nombre)) {
+			if(libros.get(contador).getTitulo().contains(titulo)) {
 				libro_salida.add(libros.get(contador));
 			}
 		}
 				
-		return libros;
+		return libro_salida;
 	}
 	
 

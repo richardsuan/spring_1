@@ -29,15 +29,10 @@ export class AutorService {
     return this.httpClient.get<any>(this.API_SERVER+"autor/buscar/",{​​ params: params }​​);
   }
 
-  public getallAutores(): Observable<any> {//guarda un autor
-    
-    //console.log(autor..get('nombre').value);
-    
-    //var headers = JSON.stringify(autor)
-    return this.httpClient.get(this.API_SERVER+"autores/");
+  
+
+  public deletePersona(persona:any):Observable<any>{//borra un autor
+    console.log(persona.id);
+    return this.httpClient.delete(this.API_SERVER + "autor/eliminar/"+persona.id);
   }
-/*
-  public deletePersona(id):Observable<any>{//borra un autor
-    return this.httpClient.delete(this.API_SERVER + "autor/eliminar/"+id);
-  }*/
 }

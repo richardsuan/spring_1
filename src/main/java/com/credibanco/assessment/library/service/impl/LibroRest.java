@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.credibanco.assessment.library.dto.doteditorial;
@@ -36,13 +37,14 @@ public class LibroRest {
 	private ResponseEntity <List<dotlibro>> getAll_libros(){//este metodo trae a todas las libroes
 		//System.out.println("hicieron get");
 		dotlibro dot_libro = new dotlibro();
-		//return ResponseEntity.ok(dot_libro.creardot(null, Editorial_servi, Libro_servi, Autor_servi));
-		return null;
+		return ResponseEntity.ok(dot_libro.creardot(null, Editorial_servi, Libro_servi, Autor_servi));
+		//return null;
 	}
 	//
-	@RequestMapping("/libro/buscar/")//buscar por nombre 
+	@RequestMapping(value="/libro/buscar")//buscar por nombre 
 	@GetMapping
-	private ResponseEntity<List<dotlibro>> getoneLibro(@RequestBody libro libro_busqueda){
+	private ResponseEntity<List<dotlibro>> getoneLibro(@RequestParam("titulo")  String libro_busqueda){
+		System.out.println(libro_busqueda);
 		//List<autor> Autor =new ArrayList<>();
 		//System.out.println(libro_busqueda.getTitulo());
 		dotlibro dotlibros = new dotlibro();

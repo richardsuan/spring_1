@@ -54,7 +54,41 @@
   </form>
 </div>
 
+<div class="formularioRegistro">
+  <p>Buscar Persona</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Id DB</th>
+        <th># Documento</th>
+        <th>Nombre</th>
+        <th>fecha nacimiento</th>
+        <th>pais de nacimiento</th>
+        <th>Ciudad de nacimiento</th>
+        <th>correo</th>
+        <th>libros escritos</th>
+      
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of persona">
+        <td>{{item.id}}</td>
+        <td>{{item.d_identidad}}</td>
+        <td>{{item.nombre}}</td>
 
+        <td>{{item.fecha_nacimiento}}</td>
+        <td>{{item.pais}}</td>
+        <td>{{item.lugar_nacimiento}}</td>
+        
+        <td>{{item.correo}}</td>
+        <td>{{item.libros_escritos}}</td>
+        <td>
+         
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 <div class="formularioRegistro">
   <p>Personas registradas</p>
@@ -64,13 +98,12 @@
         <th>Id DB</th>
         <th># Documento</th>
         <th>Nombre</th>
-
         <th>fecha nacimiento</th>
         <th>pais de nacimiento</th>
         <th>Ciudad de nacimiento</th>
-
         <th>correo</th>
         <th>libros escritos</th>
+        <th>Opciones</th>
       </tr>
     </thead>
     <tbody>
@@ -85,7 +118,10 @@
         
         <td>{{item.correo}}</td>
         <td>{{item.libros_escritos}}</td>
-
+        <td>
+          
+          <button type="button" class="btn btn-danger" (click)="eliminar(item)">Eliminar</button>
+        </td>
       </tr>
     </tbody>
   </table>
