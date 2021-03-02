@@ -14,6 +14,15 @@ export class LibrocontrolComponent implements OnInit {
   libro:any;
   libros:any;
   libroForm!: FormGroup;
+
+  mis_generos = [
+    {name: ''},
+    {name: 'Narrativa'},
+    {name: 'Lirica'},
+    {name: 'Teatro'},
+    {name: 'Ensayo'},
+    
+  ];
  // const swal = require('sweetalert2');
   constructor(
     public fb: FormBuilder,
@@ -22,12 +31,12 @@ export class LibrocontrolComponent implements OnInit {
 
   ngOnInit(): void {
     this.libroForm = this.fb.group({
-      titulo : ['', Validators.required],      
-      ano : ['', Validators.required],
-      genero : ['', Validators.required],
-      paginas : ['', Validators.required],
-      my_autor : ['', Validators.required],
-      my_editorial : ['', Validators.required],
+      titulo : ['', [Validators.required,Validators.maxLength(100)]],      
+      ano : ['', [Validators.required,Validators.maxLength(4),Validators.pattern("^[0-9]*$")]],
+      genero : ['',[ Validators.required,Validators.pattern("[a-zA-Z]*")]],
+      paginas : ['',[ Validators.required,Validators.maxLength(4),Validators.pattern("^[0-9]*$")]],
+      my_autor : ['',[ Validators.required,Validators.maxLength(4),Validators.pattern("^[0-9]*$")]],
+      my_editorial : ['',[ Validators.required,Validators.maxLength(4),Validators.pattern("^[0-9]*$")]]
     })
     this.libroService.getAllLibros().subscribe (resp => {
       this.libros=resp;
@@ -48,6 +57,7 @@ export class LibrocontrolComponent implements OnInit {
       )
     }else{
       console.log("no es valido");
+      console.log(this.libroForm.value);
      
     }
   }
@@ -62,5 +72,27 @@ export class LibrocontrolComponent implements OnInit {
     error => { console.error(error) }
   )
 }
+    get titulo() { 
+      return this.libroForm.get('titulo'); 
+    }
+    get ano() { 
+      return this.libroForm.get('ano'); 
+    }
+    get genero() { 
+      return this.libroForm.get('genero'); 
+    }
+    get paginas() { 
+      return this.libroForm.get('paginas'); 
+    }
+    get my_autor() { 
+      return this.libroForm.get('my_autor'); 
+    }
+
+    get my_editorial() { 
+      return this.libroForm.get('my_editorial'); 
+    }
+    generos(){
+      return this.mis_generos.values; 
+    }
 
 }

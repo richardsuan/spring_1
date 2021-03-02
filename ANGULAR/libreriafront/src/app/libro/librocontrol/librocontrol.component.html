@@ -1,4 +1,9 @@
 <p>librocontrol works!</p>
+<div class="sliderwx"
+data-id="entero" data-title="Entero 1 a 25:"
+data-width="250" data-type="int" data-decimal="0"
+data-min="1" data-max="25"></div>
+<br>
 
 <div class="formulario">
   <form [formGroup] ="libroForm" (ngSubmit)="guardar()">
@@ -7,32 +12,118 @@
     <div class="form-group">
       <label>Titulo</label>
       <input type="text" formControlName="titulo" class="form-control">
+
+      <div class="alert-danger" *ngIf="titulo?.invalid && (titulo?.dirty || titulo?.touched)">
+        <div class="container-error-message" *ngIf="titulo?.errors?.required">
+          El Titulo es requerido
+        </div>
+
+        <div class="alert-danger" *ngIf="titulo?.invalid && (titulo?.dirty || titulo?.touched)">
+          <div class="container-error-message" *ngIf="titulo?.errors?.maxlength">
+            Maximo 100 caracteres
+          </div>  
+        </div>         
+      </div>
     </div>
 
     
     <div class="form-group">
       <label>Año</label>
-      <input type="date" max="2021-03-01"  formControlName="ano" class="form-control">
+      <input type="text"  formControlName="ano" class="form-control">
+      <div class="alert-danger" *ngIf="ano?.invalid && (ano?.dirty || ano?.touched)">
+        <div class="container-error-message" *ngIf="ano?.errors?.required">
+          El año es requerido
+        </div>
+
+        <div class="alert-danger" *ngIf="ano?.invalid && (ano?.dirty || ano?.touched)">
+          <div class="container-error-message" *ngIf="ano?.errors?.maxlength">
+            Maximo 4 digitos
+          </div>  
+        </div>    
+        
+        <div class="container-error-message" *ngIf="ano?.errors?.pattern">
+          Ingrese solo numeros.
+       </div>
+
+      </div>
     </div>
 
-    <div class="form-group">
-      <label>Genero </label>
-      <input type="text" formControlName="genero" class="form-control">
+  <div class="form-group">
+    <label>Genero</label>
+    <select formControlName="genero" class="form-control">
+      <option *ngFor="let mis_generos of mis_generos" >
+        {{ mis_generos.name }}
+      </option>
+    </select>
+    <div class="alert-danger" *ngIf="genero?.invalid && (genero?.dirty || genero?.touched)">
+      <div class="container-error-message" *ngIf="genero?.errors?.required">
+        Selecione un genero
+      </div>
     </div>
+  </div>
+    
 
     <div class="form-group">
-      <label>paginas</label>
+      <label>Numero de paginas</label>
       <input type="text" formControlName="paginas" class="form-control">
+      <div class="alert-danger" *ngIf="paginas?.invalid && (paginas?.dirty || paginas?.touched)">
+        <div class="container-error-message" *ngIf="paginas?.errors?.required">
+          El numero de paginas es requerido
+        </div>
+
+        <div class="alert-danger" *ngIf="paginas?.invalid && (paginas?.dirty || paginas?.touched)">
+          <div class="container-error-message" *ngIf="paginas?.errors?.maxlength">
+            Maximo 4 digitos
+          </div>  
+        </div>    
+        
+        <div class="container-error-message" *ngIf="paginas?.errors?.pattern">
+          Ingrese solo numeros.
+       </div>
+
+      </div>
     </div>
 
     <div class="form-group">
       <label>Id del autor</label>
       <input type="text" formControlName="my_autor" class="form-control">
+      <div class="alert-danger" *ngIf="my_autor?.invalid && (my_autor?.dirty || my_autor?.touched)">
+        <div class="container-error-message" *ngIf="my_autor?.errors?.required">
+          El Id del autor es requerido
+        </div>
+
+        <div class="alert-danger" *ngIf="my_autor?.invalid && (my_autor?.dirty || my_autor?.touched)">
+          <div class="container-error-message" *ngIf="my_autor?.errors?.maxlength">
+            Maximo 4 digitos
+          </div>  
+        </div>    
+        
+        <div class="container-error-message" *ngIf="my_autor?.errors?.pattern">
+          Ingrese solo numeros.
+       </div>
+
+      </div>
     </div>
 
     <div class="form-group">
       <label>Id de la editorial</label>
       <input type="text" formControlName="my_editorial" class="form-control">
+      <div class="alert-danger" *ngIf="my_editorial?.invalid && (my_editorial?.dirty || my_editorial?.touched)">
+        <div class="container-error-message" *ngIf="my_editorial?.errors?.required">
+          El Id de la editorial es requerido
+        </div>
+
+        <div class="alert-danger" *ngIf="my_editorial?.invalid && (my_editorial?.dirty || my_editorial?.touched)">
+          <div class="container-error-message" *ngIf="my_editorial?.errors?.maxlength">
+            Maximo 4 digitos
+          </div>  
+        </div>    
+        
+        <div class="container-error-message" *ngIf="my_editorial?.errors?.pattern">
+          Ingrese solo numeros.
+       </div>
+
+      </div>
     </div>
     
     
@@ -62,8 +153,8 @@
       <tr>
         <th>Titulo</th>
         <th>Año</th>
-        <th>Nombre</th>
         <th>Genero</th>
+        
         <th># de paginas</th>
         <th>Autor</th>
         <th>Editorial</th>
@@ -74,11 +165,11 @@
     <tbody>
       <tr *ngFor="let item of libro">
         <td>{{item.titulo}}</td>
-        <td>{{item.ano}}</td>
+        <td>{{item.ano}}</td>        
         <td>{{item.genero}}</td>
 
         <td>{{item.paginas}}</td>
-        <td>{{item.Autor}}</td>
+        
         <td>{{item.my_autor}}</td>
         
         <td>{{item.my_editorial}}</td>
