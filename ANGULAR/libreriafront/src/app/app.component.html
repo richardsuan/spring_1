@@ -1,56 +1,19 @@
 <h1>Crear autor </h1>
-<!--
+
 <div class="formulario">
-  <form [formGroup] ="autorForm" (ngSubmit)="guardar()">
-    
-
-    <div class="form-group">
-      <label>Nombre completo</label>
-      <input type="text" formControlName="nombre" class="form-control">
-    </div>
-
-    <div class="form-group">
-      <label>Documento de identidad</label>
-      <input type="text" formControlName="d_identidad" class="form-control">
-    </div>
-
-    <div class="form-group">
-      <label>Fecha de nacimiento</label>
-      <input type="date" max="2006-01-01" min ="1921-01-01" formControlName="fecha_nacimiento" class="form-control">
-    </div>
-
-    <div class="form-group">
-      <label>Pais</label>
-      <input type="text" formControlName="pais" class="form-control">
-    </div>
-
-    <div class="form-group">
-      <label>Lugar de nacimiento</label>
-      <input type="text" formControlName="lugar_nacimiento" class="form-control">
-    </div>
-
-    <div class="form-group">
-      <label>Correo</label>
-      <input type="email" formControlName="correo" class="form-control">
-    </div>
-
-    
-    <button type="submit" class="btn btn-primary" >Guardar</button>
-    
-  </form>
+  <app-librocontrol></app-librocontrol>
 </div>
 
 <div class="formulario">
-  <form [formGroup] ="autorForm" (ngSubmit)="buscarAutor()">
-    <div class="form-group">
-      <label>Buscar autor</label>
-      <input type="text" formControlName="nombre" class="form-control">
-    </div>
-
-    
-    <button type="submit" class="btn btn-primary" >Buscar</button>
-  </form>   
+  <router-outlet></router-outlet>
 </div>
--->
-<app-librocontrol></app-librocontrol>
-<router-outlet></router-outlet>
+<div class="formulario">
+
+</div>
+<div class="formulario">
+  <app-editorialcontrol></app-editorialcontrol>
+</div>
+
+<div class="formulario">
+  <app-autorcontrol></app-autorcontrol>
+</div>

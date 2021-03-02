@@ -1,23 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LibrocontrolComponent } from './librocontrol/librocontrol.component';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { EditorialcontrolComponent } from './editorialcontrol/editorialcontrol.component';
 
 
 @NgModule({
-  declarations: [LibrocontrolComponent],
+  declarations: [EditorialcontrolComponent],
   imports: [
+    
     CommonModule,
     BrowserModule,    
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule
-
   ],
-  exports:[LibrocontrolComponent]
+  exports:[EditorialcontrolComponent]
 })
-export class LibroModule { }
+export class EditorialModule { }

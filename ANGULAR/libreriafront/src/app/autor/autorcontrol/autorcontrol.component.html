@@ -1,0 +1,92 @@
+<p>autorcontrol works!</p>
+
+
+
+<div class="formulario">
+  <form [formGroup]="autorForm" (ngSubmit)="guardar()">
+
+
+    <div class="form-group">
+      <label>Nombre completo</label>
+      <input type="text" formControlName="nombre" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Documento de identidad</label>
+      <input type="text" formControlName="d_identidad" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Fecha de nacimiento</label>
+      <input type="date" max="2006-01-01" min="1921-01-01" formControlName="fecha_nacimiento" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Pais</label>
+      <input type="text" formControlName="pais" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Lugar de nacimiento</label>
+      <input type="text" formControlName="lugar_nacimiento" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Correo</label>
+      <input type="email" formControlName="correo" class="form-control">
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+
+  </form>
+</div>
+
+<div class="formulario">
+  <form [formGroup]="autorForm" (ngSubmit)="buscarAutor()">
+    <div class="form-group">
+      <label>Buscar autor</label>
+      <input type="text" formControlName="nombre" class="form-control">
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Buscar</button>
+  </form>
+</div>
+
+
+
+<div class="formularioRegistro">
+  <p>Personas registradas</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Id DB</th>
+        <th># Documento</th>
+        <th>Nombre</th>
+
+        <th>fecha nacimiento</th>
+        <th>pais de nacimiento</th>
+        <th>Ciudad de nacimiento</th>
+
+        <th>correo</th>
+        <th>libros escritos</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of personas">
+        <td>{{item.id}}</td>
+        <td>{{item.d_identidad}}</td>
+        <td>{{item.nombre}}</td>
+
+        <td>{{item.fecha_nacimiento}}</td>
+        <td>{{item.pais}}</td>
+        <td>{{item.lugar_nacimiento}}</td>
+        
+        <td>{{item.correo}}</td>
+        <td>{{item.libros_escritos}}</td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>

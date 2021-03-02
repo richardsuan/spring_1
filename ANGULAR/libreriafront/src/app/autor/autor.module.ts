@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LibrocontrolComponent } from './librocontrol/librocontrol.component';
+import { AutorcontrolComponent } from './autorcontrol/autorcontrol.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 
+
 @NgModule({
-  declarations: [LibrocontrolComponent],
+  declarations: [AutorcontrolComponent],
   imports: [
     CommonModule,
     BrowserModule,    
@@ -16,8 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule
-
   ],
-  exports:[LibrocontrolComponent]
+  exports:[AutorcontrolComponent]
 })
-export class LibroModule { }
+export class AutorModule { }
