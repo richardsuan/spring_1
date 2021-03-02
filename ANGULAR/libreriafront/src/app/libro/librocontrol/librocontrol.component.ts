@@ -10,6 +10,8 @@ import { LibroService } from 'src/app/services/libro/libro.service';
 })
 export class LibrocontrolComponent implements OnInit {
   //libro
+  libro:any;
+  libros:any;
   libroForm!: FormGroup;
   constructor(
     public fb: FormBuilder,
@@ -25,18 +27,27 @@ export class LibrocontrolComponent implements OnInit {
       my_autor : ['', Validators.required],
       my_editorial : ['', Validators.required],
     })
+    this.libroService.getAllLibros().subscribe (resp => {
+      this.libros=resp;
+    
+      console.log(resp);
+    },
+      error => { console.error(error) }
+    );
   }
   guardar(): void {
       this.libroService.saveLibro(this.libroForm.value).subscribe(resp => {
-      //this.autorForm.reset();
+      this.libroForm.reset();
      // this.personas=this.personas.filter(persona=> resp.id!==persona.id);
-      //this.personas.push(resp);
+      this.libros.push(resp);
     },
       error => { console.error(error) }
     )
   }
   buscarLibro(): void {
-    this.libroService.getsimilarLibro(this.libroForm.value).subscribe(resp => {
+    this.libroService.getsimilarLibro(this.libroForm.get("titulo")?.value).subscribe(resp => {
+    this.libro=resp;
+    console.log(this.libroForm.get("titulo")?.value);
     //this.autorForm.reset();
    // this.personas=this.personas.filter(persona=> resp.id!==persona.id);
     //this.personas.push(resp);
