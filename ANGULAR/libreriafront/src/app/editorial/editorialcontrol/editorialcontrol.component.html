@@ -46,3 +46,78 @@
     </form>   
   </div>
   
+
+
+  <div class="formularioRegistro">
+    <p>Buscar Persona</p>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Id DB</th>          
+          <th>Nombre</th>
+          <th>Direccion  correspondencia</th>
+          <th>Telefono</th>          
+          <th>correo</th>
+          <th>maximo libros</th>
+          <th># de libros editados</th>
+          <th>libros editados</th>
+
+       
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of editorial">
+          <td>{{item.id}}</td>
+          <td>{{item.nombre}}</td>
+          <td>{{item.direccion_correspondencia}}</td>
+  
+          <td>{{item.telefono}}</td>
+          <td>{{item.correo}}</td>
+          <td>{{item.maximo_libros}}</td>
+          
+          <td>{{item.libros_editados_int}}</td>
+          <td>{{item.libros_editados}}</td>
+          
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="formularioRegistro">
+    <p>Personas registradas</p>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Id DB</th>          
+          <th>Nombre</th>
+          <th>Direccion  correspondencia</th>
+          <th>Telefono</th>          
+          <th>correo</th>
+          <th>maximo libros</th>
+          <th># de libros editados</th>
+          <th>libros editados</th>
+
+       
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of editoriales">
+          <td>{{item.id}}</td>
+          <td>{{item.nombre}}</td>
+          <td>{{item.direccion_correspondencia}}</td>
+  
+          <td>{{item.telefono}}</td>
+          <td>{{item.correo}}</td>
+          <td>{{item.maximo_libros}}</td>
+          
+          <td>{{item.libros_editados_int}}</td>
+          <td>{{item.libros_editados}}</td>
+          <td>
+            
+            <button type="button" class="btn btn-danger" (click)="eliminar(item)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

@@ -19,14 +19,24 @@ export class EditorialcontrolComponent implements OnInit {
   editorial:any;
   ngOnInit(): void {
     this.editorialForm = this.fb.group({
-     
+      id: ['', Validators.required],
       nombre : ['', Validators.required],
       direccion_correspondencia : ['', Validators.required],
       telefono : ['', Validators.required],
       correo : ['', Validators.required],
-      maximo_libros : ['', Validators.required]
-     
+      maximo_libros : ['', Validators.required],
+      libros_editados_int : ['', Validators.required],
+      libros_editados: ['', Validators.required]
     })
+
+    this.editorialService.getAllEditorial().subscribe (resp => {
+      this.editoriales=resp;
+    
+      console.log(resp);
+    },
+      error => { console.error(error) }
+    );
+
   }
   guardar(): void {
     this.editorialService.saveEditorial(this.editorialForm.value).subscribe(resp => {
@@ -43,6 +53,16 @@ buscarEditorial(): void {
   this.editorial=resp;
   
   console.log(resp);
+},
+  error => { console.error(error) }
+)
+}
+eliminar(editorial:any): void {
+  this.editorialService.deleteEditorial(editorial).subscribe(resp => {
+  console.log(resp);
+  if(resp===true){
+    this.editoriales.pop(editorial);
+  }
 },
   error => { console.error(error) }
 )
