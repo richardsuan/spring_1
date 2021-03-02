@@ -19,14 +19,14 @@ public class dotlibro implements Serializable {
 	private String  my_autor;
 	private String  my_editorial;
 	
-public List<dotlibro> creardot(libro libro_busqueda,editorial_servi Editorial_servi,libro_servi Libro_servi,autor_servi Autor_servi  ){		
+public List<dotlibro> creardot(String libro_busqueda,editorial_servi Editorial_servi,libro_servi Libro_servi,autor_servi Autor_servi  ){		
 		List<dotlibro> Libro =new ArrayList<>();
 		List<libro> libros_semejantes =new ArrayList<>();
 		
 		if(libro_busqueda!=null) {
 			System.out.println("if /n");
-			libro_busqueda.setTitulo(libro_busqueda.getTitulo().toUpperCase());//se pone en mayuscula para evitar problemas con la busqueda
-			libros_semejantes.addAll(Libro_servi.findAllByName(libro_busqueda.getTitulo()));
+			
+			libros_semejantes.addAll(Libro_servi.findAllByName(libro_busqueda.toUpperCase()));
 		}else {
 			System.out.println("else /n");
 			libros_semejantes.addAll(Libro_servi.findAll());//esto se hace para pedir todos los editoriales

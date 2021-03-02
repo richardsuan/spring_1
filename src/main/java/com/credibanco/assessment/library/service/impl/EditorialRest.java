@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.credibanco.assessment.library.dto.dotautor;
@@ -38,9 +39,9 @@ public class EditorialRest {
 	}
 	
 	
-	@RequestMapping("/editorial/buscar/")//buscar por nombre 
+	@RequestMapping("/editorial/buscar")//buscar por nombre 
 	@GetMapping
-	private ResponseEntity<List<doteditorial>> getoneEditorial(@RequestBody editorial Editorial_busqueda){
+	private ResponseEntity<List<doteditorial>> getoneEditorial(@RequestParam("nombre")  String Editorial_busqueda){
 		//List<autor> Autor =new ArrayList<>();
 		
 		doteditorial dot_editoriales = new doteditorial();

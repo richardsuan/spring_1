@@ -16,13 +16,13 @@ public class doteditorial implements Serializable {
 	private int libros_editados_int;
 	private String libros_editados;
 	//
-	public List<doteditorial> creardot(editorial editorial_busqueda,editorial_servi Editorial_servi,libro_servi Libro_servi  ) {
+	public List<doteditorial> creardot(String editorial_busqueda,editorial_servi Editorial_servi,libro_servi Libro_servi  ) {
 		
 		List<doteditorial> Editorial =new ArrayList<>();
 		List<editorial> Editoriales_semejantes =new ArrayList<>();
 		if(editorial_busqueda!=null) {
-			editorial_busqueda.setNombre(editorial_busqueda.getNombre().toUpperCase());//se pone en mayuscula para evitar problemas con la busqueda
-			Editoriales_semejantes.addAll(Editorial_servi.findAllByName(editorial_busqueda.getNombre()));
+			
+			Editoriales_semejantes.addAll(Editorial_servi.findAllByName(editorial_busqueda.toUpperCase()));
 		}else {
 			Editoriales_semejantes.addAll(Editorial_servi.findAll());//esto se hace para pedir todos los editoriales
 		}

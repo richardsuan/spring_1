@@ -60,7 +60,7 @@ export class AutorcontrolComponent implements OnInit {
   )
 }
   buscarAutor(): void {
-    //Headers:
+    
     this.autorService.getsimilarAutor(this.autorForm.get("nombre")?.value).subscribe(resp => {
     this.persona=resp;
     
