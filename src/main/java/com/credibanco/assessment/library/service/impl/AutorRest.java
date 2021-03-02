@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.credibanco.assessment.library.dto.dotautor;
@@ -41,9 +41,9 @@ public class AutorRest {
 		
 	}
 	
-	@RequestMapping(value="/autor/buscar/{Autor_busqueda}")//buscar por nombre 
+	@RequestMapping(value="/autor/buscar")//buscar por nombre 
 	@GetMapping
-	private ResponseEntity<List<dotautor>> getoneAutor(@PathVariable String Autor_busqueda){
+	private ResponseEntity<List<dotautor>> getoneAutor(@RequestParam("nombre")  String Autor_busqueda){
 		//List<autor> Autor =new ArrayList<>();
 		System.out.println("hicieron get en /autor/buscar/");
 		dotautor autor_salida = new dotautor();

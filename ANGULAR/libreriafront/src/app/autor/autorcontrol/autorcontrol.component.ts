@@ -11,6 +11,7 @@ export class AutorcontrolComponent implements OnInit {
 
   autorForm!: FormGroup;
   persona: any;
+  personas: any;
   totalAngularPackages: any;
   constructor(
     public fb: FormBuilder,
@@ -19,6 +20,7 @@ export class AutorcontrolComponent implements OnInit {
 
   ngOnInit(): void {
     this.autorForm = this.fb.group({
+      id : ['', Validators.required],
       d_identidad : ['', Validators.required],
       nombre : ['', Validators.required],
       fecha_nacimiento : ['', Validators.required],
@@ -26,11 +28,22 @@ export class AutorcontrolComponent implements OnInit {
       correo : ['', Validators.required],
       pais : ['', Validators.required],
       libros_escritos : ['', Validators.required]
-    })
+    });
+    this.autorService.getAllAutores().subscribe (resp => {
+      this.personas=resp;
+    
+      console.log(resp);
+    },
+      error => { console.error(error) }
+    );
+    
+    
+
   }
   guardar(): void {
       this.autorService.saveAutor(this.autorForm.value).subscribe(resp => {
-      //this.autorForm.reset();
+      this.autorForm.reset();
+      this.personas.push(resp);
      // this.personas=this.personas.filter(persona=> resp.id!==persona.id);
       //this.personas.push(resp);
     },
@@ -43,7 +56,7 @@ export class AutorcontrolComponent implements OnInit {
     this.persona=resp;
     //this.autorForm.reset();
    // this.personas=this.personas.filter(persona=> resp.id!==persona.id);
-    //this.personas.push(resp);
+    //
     //this.totalAngularPackages = resp.total;
     console.log(resp);
   },
