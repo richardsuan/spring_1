@@ -36,8 +36,9 @@ export class AutorService {
     //var headers = JSON.stringify(autor)
     return this.httpClient.get(this.API_SERVER+"autores/");
   }
-/*
-  public deletePersona(id):Observable<any>{//borra un autor
-    return this.httpClient.delete(this.API_SERVER + "autor/eliminar/"+id);
-  }*/
+
+  public deletePersona(persona:any):Observable<any>{//borra un autor
+    console.log(persona.id);
+    return this.httpClient.delete(this.API_SERVER + "autor/eliminar/"+persona.id);
+  }
 }

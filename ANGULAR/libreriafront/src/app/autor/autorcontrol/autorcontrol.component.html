@@ -64,13 +64,12 @@
         <th>Id DB</th>
         <th># Documento</th>
         <th>Nombre</th>
-
         <th>fecha nacimiento</th>
         <th>pais de nacimiento</th>
         <th>Ciudad de nacimiento</th>
-
         <th>correo</th>
         <th>libros escritos</th>
+        <th>Opciones</th>
       </tr>
     </thead>
     <tbody>
@@ -85,7 +84,10 @@
         
         <td>{{item.correo}}</td>
         <td>{{item.libros_escritos}}</td>
-
+        <td>
+          <button type="button" class="btn btn-success" >Editar</button>
+          <button type="button" class="btn btn-danger" (click)="eliminar(item)">Eliminar</button>
+        </td>
       </tr>
     </tbody>
   </table>

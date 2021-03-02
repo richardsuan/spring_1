@@ -50,14 +50,21 @@ export class AutorcontrolComponent implements OnInit {
       error => { console.error(error) }
     )
   }
+  eliminar(persona:any): void {
+    this.autorService.deletePersona(persona).subscribe(resp => {
+    console.log(resp);
+    if(resp===true){
+      this.personas.pop(persona);
+    }
+  },
+    error => { console.error(error) }
+  )
+}
   buscarAutor(): void {
     //Headers:
     this.autorService.getsimilarAutor(this.autorForm.get("nombre")?.value).subscribe(resp => {
     this.persona=resp;
-    //this.autorForm.reset();
-   // this.personas=this.personas.filter(persona=> resp.id!==persona.id);
-    //
-    //this.totalAngularPackages = resp.total;
+    
     console.log(resp);
   },
     error => { console.error(error) }
