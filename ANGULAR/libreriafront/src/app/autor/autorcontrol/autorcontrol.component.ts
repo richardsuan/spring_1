@@ -44,8 +44,7 @@ export class AutorcontrolComponent implements OnInit {
       this.autorService.saveAutor(this.autorForm.value).subscribe(resp => {
       this.autorForm.reset();
       this.personas.push(resp);
-     // this.personas=this.personas.filter(persona=> resp.id!==persona.id);
-      //this.personas.push(resp);
+     
     },
       error => { console.error(error) }
     )
