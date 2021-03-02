@@ -153,8 +153,7 @@ data-min="1" data-max="25"></div>
       <tr>
         <th>Titulo</th>
         <th>Año</th>
-        <th>Genero</th>
-        
+        <th>Genero</th>        
         <th># de paginas</th>
         <th>Autor</th>
         <th>Editorial</th>
@@ -167,16 +166,11 @@ data-min="1" data-max="25"></div>
         <td>{{item.titulo}}</td>
         <td>{{item.ano}}</td>        
         <td>{{item.genero}}</td>
-
-        <td>{{item.paginas}}</td>
-        
-        <td>{{item.my_autor}}</td>
-        
+        <td>{{item.paginas}}</td>        
+        <td>{{item.my_autor}}</td>        
         <td>{{item.my_editorial}}</td>
         
-        <td>
-         
-        </td>
+        
       </tr>
     </tbody>
   </table>
@@ -189,11 +183,11 @@ data-min="1" data-max="25"></div>
       <tr>
         <th>Titulo</th>
         <th>Año</th>
-        <th>Nombre</th>
-        <th>Genero</th>
+        <th>Genero</th>        
         <th># de paginas</th>
         <th>Autor</th>
         <th>Editorial</th>
+        
         
       
       </tr>
@@ -201,17 +195,15 @@ data-min="1" data-max="25"></div>
     <tbody>
       <tr *ngFor="let item of libros">
         <td>{{item.titulo}}</td>
-        <td>{{item.ano}}</td>
+        <td>{{item.ano}}</td>        
         <td>{{item.genero}}</td>
-
-        <td>{{item.paginas}}</td>
-        <td>{{item.Autor}}</td>
-        <td>{{item.my_autor}}</td>
-        
+        <td>{{item.paginas}}</td>        
+        <td>{{item.my_autor}}</td>        
         <td>{{item.my_editorial}}</td>
         
+        
         <td>
-         
+          <button type="button" class="btn btn-danger" (click)="eliminar(item)">Eliminar</button>
         </td>
       </tr>
     </tbody>

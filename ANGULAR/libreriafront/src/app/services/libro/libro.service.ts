@@ -23,5 +23,8 @@ export class LibroService {
     console.log(this.API_SERVER+"autor/buscar",{​​ params: params });
     return this.httpClient.get<any>(this.API_SERVER+"libro/buscar",{​​ params: params });
   }
-
+  public deleteLibro(libro:any):Observable<any>{//borra un autor
+    console.log(libro.id);
+    return this.httpClient.delete(this.API_SERVER + "libro/eliminar/"+libro.id);
+  }
 }

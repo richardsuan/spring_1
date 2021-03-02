@@ -71,7 +71,18 @@ export class LibrocontrolComponent implements OnInit {
   },
     error => { console.error(error) }
   )
-}
+  }
+  eliminar(libro:any): void {
+    this.libroService.deleteLibro(libro).subscribe(resp => {
+    console.log(resp);
+    if(resp===true){
+      this.libros.pop(libro);
+    }
+  },
+    error => { console.error(error) }
+  )
+  }
+
     get titulo() { 
       return this.libroForm.get('titulo'); 
     }

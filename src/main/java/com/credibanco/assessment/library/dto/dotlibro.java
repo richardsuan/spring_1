@@ -40,8 +40,8 @@ public List<dotlibro> creardot(String libro_busqueda,editorial_servi Editorial_s
 			dot.setAno(libros_semejantes.get(contador).getAno().toUpperCase());					
 			dot.setGenero(libros_semejantes.get(contador).getGenero().toUpperCase());
 			dot.setPaginas(libros_semejantes.get(contador).getPaginas());									
-			dot.setMy_autor(Autor_servi.findAutorstring(libros_semejantes.get(contador).getId()));
-			dot.setMy_editorial(Editorial_servi.findEditorialstring(libros_semejantes.get(contador).getId()));
+			dot.setMy_autor(Autor_servi.findAutorstring(libros_semejantes.get(contador).getMy_autor()));
+			dot.setMy_editorial(Editorial_servi.findEditorialstring(libros_semejantes.get(contador).getMy_editorial()));
 			Libro.add(dot);
 		}
 		return Libro;
