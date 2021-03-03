@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AutorService } from 'src/app/services/autor/autor.service';
+import { EstadosServiceService } from 'src/app/services/EstadosService/estados-service.service';
+import { PaisesServiceService } from 'src/app/services/PaisesService/paises-service.service';
 
 @Component({
   selector: 'app-autorcontrol',
@@ -14,8 +16,13 @@ export class AutorcontrolComponent implements OnInit {
   persona: any;
   personas: any;
   totalAngularPackages: any;
+  paises: any;
+  
+  estados: any;
   constructor(
     public fb: FormBuilder,
+    public estadosService: EstadosServiceService,
+    public paisesService: PaisesServiceService,
     public autorService:AutorService
   ) { }
 
@@ -38,12 +45,34 @@ export class AutorcontrolComponent implements OnInit {
     },
       error => { console.error(error) }
     );
+    this.paisesService.getAllPaises().subscribe(resp => {
+      console.log(resp);
+      this.paises = resp;
+    },
+      error => { console.error(error) }
+    );
     
-    
+    //
+    this.autorForm.get('pais').valueChanges.subscribe(value => {
+      this.estadosService.getAllEstadosByPais(value.id).subscribe(resp => {
+        this.estados = resp;
+      },
+        error => { console.error(error) }
+      );
+    });
+    //
 
   }
   guardar(): void {
+    console.log(this.autorForm.get('lugar_nacimiento').value);
+    
+    
     if(this.autorForm.valid) { 
+        this.autorForm.patchValue({
+          pais: this.autorForm.get('pais').value["nombre"],
+          lugar_nacimiento:this.autorForm.get('lugar_nacimiento').value["nombre"]
+        });
+       
         this.autorService.saveAutor(this.autorForm.value).subscribe(resp => {
         this.autorForm.reset();
         this.personas.push(resp);
@@ -86,6 +115,11 @@ export class AutorcontrolComponent implements OnInit {
   get correo() { 
     return this.autorForm.get('correo'); 
   }
-
+  get pais() { 
+    return this.autorForm.get('pais'); 
+  }
+  get lugar_nacimiento(){
+    return this.autorForm.get('lugar_nacimiento'); 
+  }
 
 }
