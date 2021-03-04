@@ -75,6 +75,7 @@ export class LibrocontrolComponent implements OnInit {
   eliminar(libro:any): void {
     this.libroService.deleteLibro(libro).subscribe(resp => {
     console.log(resp);
+    this.buscarLibro();
     if(resp===true){
       this.libros.pop(libro);
     }
@@ -105,5 +106,6 @@ export class LibrocontrolComponent implements OnInit {
     generos(){
       return this.mis_generos.values; 
     }
+    
 
 }

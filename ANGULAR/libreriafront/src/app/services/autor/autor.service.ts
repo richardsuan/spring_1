@@ -19,11 +19,13 @@ export class AutorService {
     console.log(autor);
     return this.httpClient.post(this.API_SERVER+"autor/agregar/",autor);
   }
-  public getsimilarAutor (autor:string): Observable<any>{//guarda un autor
+  public getsimilarAutor (autor:string,busqueda:any): Observable<any>{//guarda un autor
     console.log("autor");
+    console.log(busqueda+"similar");
     //console.log(autor..get('nombre').value);
     
     let params = new HttpParams().set('nombre', autor);
+    params.set('valor',busqueda);
     console.log(this.API_SERVER+"autor/buscar/",{​​ params: params });
     //var headers = JSON.stringify(autor)
     return this.httpClient.get<any>(this.API_SERVER+"autor/buscar/",{​​ params: params }​​);

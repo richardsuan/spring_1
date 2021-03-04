@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { AutorService } from 'src/app/services/autor/autor.service';
 import { EstadosServiceService } from 'src/app/services/EstadosService/estados-service.service';
 import { PaisesServiceService } from 'src/app/services/PaisesService/paises-service.service';
@@ -17,14 +18,27 @@ export class AutorcontrolComponent implements OnInit {
   personas: any;
   totalAngularPackages: any;
   paises: any;
-  
+  verSeleccion: any;
+  opcionSeleccionado: any;
+  busqueda = [
+    {name: '',valor :'1'},
+    {name: 'ID DB',valor :'2'},
+    {name: '# de Documento',valor :'3'},
+    {name: 'NOMBRE',valor :'4'},
+    {name: 'PAIS DE NACIMIENTO',valor :'5'},
+    {name: 'CIUDAD DE NACIMIENTO',valor :'6'},
+    {name: 'CORREO',valor :7},
+    
+  ];
   estados: any;
   constructor(
     public fb: FormBuilder,
     public estadosService: EstadosServiceService,
     public paisesService: PaisesServiceService,
     public autorService:AutorService
-  ) { }
+  ) {
+
+   }
 
   ngOnInit(): void {
     this.autorForm = this.fb.group({
@@ -97,13 +111,20 @@ export class AutorcontrolComponent implements OnInit {
 }
   buscarAutor(): void {
     
-    this.autorService.getsimilarAutor(this.autorForm.get("nombre")?.value).subscribe(resp => {
+    this.autorService.getsimilarAutor(this.autorForm.get("nombre")?.value,this.verSeleccion).subscribe(resp => {
     this.persona=resp;
     
     console.log(resp);
   },
     error => { console.error(error) }
   )
+}
+capturar() {
+  // Pasamos el valor seleccionado a la variable verSeleccion
+  this.verSeleccion = this.opcionSeleccionado["valor"];
+ // console.log(type(this.opcionSeleccionado));
+  console.log(this.opcionSeleccionado["valor"]);
+  //console.log(this.opcionSeleccionado.get("valor"));
 }
   get nombre() { 
     return this.autorForm.get('nombre'); 

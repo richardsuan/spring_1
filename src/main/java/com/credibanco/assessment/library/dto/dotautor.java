@@ -17,7 +17,7 @@ public class dotautor implements Serializable{
 	private String correo;
 	private String  libros_escritos;
 	
-	public List<dotautor> creardot(String autor_busqueda,autor_servi Autor_servi,libro_servi Libro_servi  ) {
+	public List<dotautor> creardot(String autor_busqueda,String valor,autor_servi Autor_servi,libro_servi Libro_servi  ) {
 		System.out.print("dot");
 		List<dotautor> Autor =new ArrayList<>();
 		List<autor> Autores_semejantes =new ArrayList<>();

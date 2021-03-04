@@ -1,5 +1,5 @@
-<p>autorcontrol works!</p>
 
+<h2>Autor</h2>
 
 
 <div class="formulario">
@@ -89,13 +89,24 @@
 
   </form>
 </div>
-
+<br>
+<br>
+<div class="formulario">
+  <label>Selecione el tipo de busqueda</label>
+  <select [(ngModel)]="opcionSeleccionado" (change)="capturar()" class="form-control">
+      <option *ngFor="let item of busqueda" [ngValue]="item" >
+        {{ item.name }}
+      </option>
+    </select>
+</div>
 <div class="formulario">
   <form [formGroup]="autorForm" (ngSubmit)="buscarAutor()">
     <div class="form-group">
-      <label>Buscar autor</label>
+      
+      
       <input type="text" formControlName="nombre" class="form-control">
     </div>
+    
 
 
     <button type="submit" class="btn btn-primary">Buscar autor</button>
@@ -139,7 +150,7 @@
 </div>
 
 <div class="formularioRegistro">
-  <p>Personas registradas</p>
+  <p>Autores registrados</p>
   <table class="table">
     <thead>
       <tr>
