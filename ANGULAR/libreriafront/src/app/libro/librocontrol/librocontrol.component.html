@@ -82,46 +82,31 @@
 
     <div class="form-group">
       <label>Id del autor</label>
+      <select  formControlName="my_autor" class="form-control">
+        <option [ngValue]="id_autores.id"*ngFor="let id_autores of id_autores">{{id_autores.nombre}}</option>
+      </select>
+      
+    </div>
+    <!--
+    <div class="form-group">
+      <label>Id del autor</label>
       <input type="text" formControlName="my_autor" class="form-control">
       <div class="alert-danger" *ngIf="my_autor?.invalid && (my_autor?.dirty || my_autor?.touched)">
         <div class="container-error-message" *ngIf="my_autor?.errors?.required">
           El Id del autor es requerido
         </div>
 
-        <div class="alert-danger" *ngIf="my_autor?.invalid && (my_autor?.dirty || my_autor?.touched)">
-          <div class="container-error-message" *ngIf="my_autor?.errors?.maxlength">
-            Maximo 4 digitos
-          </div>  
-        </div>    
         
-        <div class="container-error-message" *ngIf="my_autor?.errors?.pattern">
-          Ingrese solo numeros.
-       </div>
 
       </div>
-    </div>
+    </div>-->
 
     <div class="form-group">
       <label>Id de la editorial</label>
-      <input type="text" formControlName="my_editorial" class="form-control">
-      <div class="alert-danger" *ngIf="my_editorial?.invalid && (my_editorial?.dirty || my_editorial?.touched)">
-        <div class="container-error-message" *ngIf="my_editorial?.errors?.required">
-          El Id de la editorial es requerido
-        </div>
-
-        <div class="alert-danger" *ngIf="my_editorial?.invalid && (my_editorial?.dirty || my_editorial?.touched)">
-          <div class="container-error-message" *ngIf="my_editorial?.errors?.maxlength">
-            Maximo 4 digitos
-          </div>  
-        </div>    
-        
-        <div class="container-error-message" *ngIf="my_editorial?.errors?.pattern">
-          Ingrese solo numeros.
-       </div>
-
-      </div>
+      <select  formControlName="my_editorial" class="form-control">
+        <option [ngValue]="id_editoriales.id" *ngFor="let id_editoriales of id_editoriales">{{id_editoriales.nombre}}</option>
+      </select>
     </div>
-    
     
     <button type="submit" class="btn btn-primary" >Guardar</button>
     

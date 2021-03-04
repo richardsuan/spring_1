@@ -14,7 +14,8 @@ export class LibrocontrolComponent implements OnInit {
   libro:any;
   libros:any;
   libroForm!: FormGroup;
-
+  id_autores:any;
+  id_editoriales:any;
   mis_generos = [
     {name: ''},
     {name: 'Narrativa'},
@@ -45,8 +46,25 @@ export class LibrocontrolComponent implements OnInit {
     },
       error => { console.error(error) }
     );
+    this.libroService.getAllEditorial().subscribe (resp => {
+      this.id_editoriales=resp;
+      
+      console.log(resp);
+    },
+      error => { console.error(error) }
+    );
+
+    this.libroService.getAllAutores().subscribe (resp => {
+      this.id_autores=resp;
+      
+      console.log(resp);
+    },
+      error => { console.error(error) }
+    );
+
   }
   guardar(): void {    
+    console.log(this.libroForm.value);
      if(this.libroForm.valid){ 
         this.libroService.saveLibro(this.libroForm.value).subscribe(resp => {
         this.libroForm.reset();

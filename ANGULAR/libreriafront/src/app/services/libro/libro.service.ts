@@ -27,4 +27,11 @@ export class LibroService {
     console.log(libro.id);
     return this.httpClient.delete(this.API_SERVER + "libro/eliminar/"+libro.id);
   }
+
+  public getAllEditorial(): Observable<any>{//trae todos los autores 
+    return this.httpClient.get(this.API_SERVER+"editoriales/espacio");
+  }//
+  public getAllAutores(): Observable<any>{//trae todos los autores 
+    return this.httpClient.get(this.API_SERVER+"autores/");
+  }
 }
