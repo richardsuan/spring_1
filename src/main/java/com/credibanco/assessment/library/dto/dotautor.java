@@ -17,13 +17,13 @@ public class dotautor implements Serializable{
 	private String correo;
 	private String  libros_escritos;
 	
-	public List<dotautor> creardot(String autor_busqueda,String valor,autor_servi Autor_servi,libro_servi Libro_servi  ) {
-		System.out.print("dot");
+	public List<dotautor> creardot(String valor_busqueda,String tipo,autor_servi Autor_servi,libro_servi Libro_servi  ) {
+		//System.out.print("dot "+autor_busqueda+"\n");
 		List<dotautor> Autor =new ArrayList<>();
 		List<autor> Autores_semejantes =new ArrayList<>();
-		if(autor_busqueda!=null) {
-			
-			Autores_semejantes.addAll(Autor_servi.findAllByName(autor_busqueda.toUpperCase()));
+		if(valor_busqueda!=null) {
+			System.out.print("dot if \n"+valor_busqueda);
+			Autores_semejantes.addAll(Autor_servi.findAllByName(valor_busqueda.toUpperCase(),tipo));
 		}else {
 			Autores_semejantes.addAll(Autor_servi.findAll());//esto se hace para pedir todos los autores
 		}

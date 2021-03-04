@@ -43,13 +43,13 @@ public class AutorRest {
 	
 	@RequestMapping(value="/autor/buscar")//buscar por nombre 
 	@GetMapping
-	private ResponseEntity<List<dotautor>> getoneAutor(@RequestParam("nombre")  String Autor_busqueda,@RequestParam("valor")  String valor){
+	private ResponseEntity<List<dotautor>> getoneAutor(@RequestParam("valor")  String Valor_busqueda,@RequestParam("tipo")  String tipo){
 		//List<autor> Autor =new ArrayList<>();
 		System.out.println("hicieron get en /autor/buscar/ \n");
-		System.out.println(valor);
-		dotautor autor_salida = new dotautor();
+		
+		dotautor autor_salida = new dotautor();//aqui paso nombre como valor
 
-		return ResponseEntity.ok(autor_salida.creardot(Autor_busqueda,valor,Autor_servi,Libro_servi));//cambiar
+		return ResponseEntity.ok(autor_salida.creardot(Valor_busqueda,tipo,Autor_servi,Libro_servi));//cambiar
 		//return ResponseEntity.ok(dot);
 		
 	}
