@@ -37,18 +37,19 @@ public class AutorRest {
 	private ResponseEntity <List<dotautor>> getAllautores(){//este metodo trae a todos los autores que estan en la base de datos
 		System.out.println("hicieron get");
 		dotautor autor_salida = new dotautor();
-		return ResponseEntity.ok(autor_salida.creardot(null,Autor_servi,Libro_servi));//cambiar
+		return ResponseEntity.ok(autor_salida.creardot(null,null,Autor_servi,Libro_servi));//cambiar
 		
 	}
 	
 	@RequestMapping(value="/autor/buscar")//buscar por nombre 
 	@GetMapping
-	private ResponseEntity<List<dotautor>> getoneAutor(@RequestParam("nombre")  String Autor_busqueda){
+	private ResponseEntity<List<dotautor>> getoneAutor(@RequestParam("valor")  String Valor_busqueda,@RequestParam("tipo")  String tipo){
 		//List<autor> Autor =new ArrayList<>();
-		System.out.println("hicieron get en /autor/buscar/");
-		dotautor autor_salida = new dotautor();
+		System.out.println("hicieron get en /autor/buscar/ \n");
+		
+		dotautor autor_salida = new dotautor();//aqui paso nombre como valor
 
-		return ResponseEntity.ok(autor_salida.creardot(Autor_busqueda,Autor_servi,Libro_servi));//cambiar
+		return ResponseEntity.ok(autor_salida.creardot(Valor_busqueda,tipo,Autor_servi,Libro_servi));//cambiar
 		//return ResponseEntity.ok(dot);
 		
 	}

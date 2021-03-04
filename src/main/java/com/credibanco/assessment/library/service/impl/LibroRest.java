@@ -54,6 +54,14 @@ public class LibroRest {
 		
 	}
 	//
+	@RequestMapping(value="/libro/buscar2/{id}")
+	@DeleteMapping
+	private  ResponseEntity<List<libro>> buscar2Libro(@PathVariable Long id){
+		//Libro_servi.deleteById(id);
+		return ResponseEntity.ok((Libro_servi.findbookAutor(id)));
+	}
+
+	//
 	@RequestMapping("/libro/agregar/")
 	@PostMapping
 	private ResponseEntity<libro> saveLibro(@RequestBody libro Libro){//sirve para guardar las libroes

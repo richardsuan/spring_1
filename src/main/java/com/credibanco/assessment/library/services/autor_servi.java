@@ -22,15 +22,50 @@ public class autor_servi  implements autor_rep{
 	
 	
 	
-	public List<autor> findAllByName(String nombre) {
+	public List<autor> findAllByName(String valor_busqueda,String tipo) {
 		// TODO Auto-generated method stub
 		List<autor> autores =Autor_rep.findAll();
 		List<autor> autor_salida =new ArrayList<>();
 		int contador=0;
 		for(contador=0;contador<autores.size();contador++) {
-			//System.out.println("Esto sale en pantalla\n"+autores.get(contador).getNombre());
-			if(autores.get(contador).getNombre().contains(nombre)) {
-				autor_salida.add(autores.get(contador));
+			
+			if("2".equals(tipo)) {//ID DB
+				System.out.println(tipo);
+				if(autores.get(contador).getId().toString().contains(valor_busqueda)) {
+					autor_salida.add(autores.get(contador));
+				}
+			}
+			
+			if("3".equals(tipo)) {//docuemnto identidad
+				System.out.println(tipo);
+				if(autores.get(contador).getD_identidad().toString().contains(valor_busqueda)) {
+					autor_salida.add(autores.get(contador));
+				}
+			}
+			if("4".equals(tipo)) {//nombre
+				System.out.println(tipo);
+				if(autores.get(contador).getNombre().contains(valor_busqueda)) {
+					autor_salida.add(autores.get(contador));
+				}
+			}
+			if("5".equals(tipo)) {//5
+				System.out.println(tipo);
+				if(autores.get(contador).getPais().toUpperCase().contains(valor_busqueda)) {
+					autor_salida.add(autores.get(contador));
+				}
+			}
+			if("6".equals(tipo)) {
+				System.out.println(tipo);
+				if(autores.get(contador).getLugar_nacimiento().toUpperCase().contains(valor_busqueda)) {
+					autor_salida.add(autores.get(contador));
+				}
+			}
+			if("7".equals(tipo)) {
+				System.out.println(tipo);
+				System.out.println(autores.get(contador).getCorreo());
+				if(autores.get(contador).getCorreo().toUpperCase().contains(valor_busqueda)) {
+					autor_salida.add(autores.get(contador));
+				}
 			}
 		}
 				

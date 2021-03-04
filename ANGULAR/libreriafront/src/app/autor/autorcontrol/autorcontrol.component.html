@@ -1,5 +1,5 @@
-<p>autorcontrol works!</p>
 
+<h2>Autor</h2>
 
 
 <div class="formulario">
@@ -9,11 +9,39 @@
     <div class="form-group">
       <label>Nombre completo</label>
       <input type="text" formControlName="nombre" class="form-control">
+
+      <div class="alert-danger" *ngIf="nombre?.invalid && (nombre?.dirty || nombre?.touched)">
+        <div class="container-error-message" *ngIf="nombre?.errors?.required">
+          Nombre es requerido
+        </div>
+        <div class="container-error-message" *ngIf="nombre?.errors?.minlength">
+          nombre debe tener un largo de 5 caracteres.
+        </div>
+
+        <div class="container-error-message" *ngIf="nombre?.errors?.pattern">
+          nombre solo debe tener letras.
+        </div>
+      </div>
+      
     </div>
 
     <div class="form-group">
       <label>Documento de identidad</label>
       <input type="text" formControlName="d_identidad" class="form-control">
+
+      <div class="alert-danger" *ngIf="d_identidad?.invalid && (d_identidad?.dirty || d_identidad?.touched)">
+        <div class="container-error-message" *ngIf="d_identidad?.errors?.required">
+          El numero de documento es  requerido
+        </div>
+        <div class="container-error-message" *ngIf="d_identidad?.errors?.maxlength">
+          maximo 12 digitos.
+        </div>
+
+        <div class="container-error-message" *ngIf="d_identidad?.errors?.pattern">
+           Solo debe tener numeros.
+        </div>
+      </div>
+
     </div>
 
     <div class="form-group">
@@ -23,39 +51,70 @@
 
     <div class="form-group">
       <label>Pais</label>
-      <input type="text" formControlName="pais" class="form-control">
+      <select name="pais" id="pais" formControlName="pais" class="form-control">
+        <option [ngValue]="item" *ngFor="let item of paises">{{item.nombre}}</option>
+      </select>
     </div>
-
     <div class="form-group">
-      <label>Lugar de nacimiento</label>
-      <input type="text" formControlName="lugar_nacimiento" class="form-control">
+      <label>Estado o región</label>
+      <select name="estado" id="estado" formControlName="lugar_nacimiento" class="form-control">
+        <option [ngValue]="item" *ngFor="let item of estados">{{item.nombre}}</option>
+      </select>
     </div>
 
     <div class="form-group">
       <label>Correo</label>
       <input type="email" formControlName="correo" class="form-control">
+
+      
+      <div class="alert-danger" *ngIf="correo?.invalid && (correo?.dirty || correo?.touched)">
+        <div class="container-error-message" *ngIf="correo?.errors?.required">
+          El correo  es  requerido
+        </div>
+
+        <div class="alert-danger" *ngIf="correo?.invalid && (correo?.dirty || correo?.touched)">
+          <div class="container-error-message" *ngIf="correo?.errors?.maxlength">
+            Maximo 400 caracteres
+          </div>  
+        </div>  
+        <div class="container-error-message" *ngIf="correo?.errors?.pattern">
+           Correo invalido.
+        </div>
+      </div>
+
     </div>
 
 
-    <button type="submit" class="btn btn-primary">Guardar</button>
+    <button type="submit" class="btn btn-primary">Guardar autor</button>
 
   </form>
 </div>
-
+<br>
+<br>
+<div class="formulario">
+  <label>Selecione el tipo de busqueda</label>
+  <select [(ngModel)]="opcionSeleccionado" (change)="capturar()" class="form-control">
+      <option *ngFor="let item of busqueda" [ngValue]="item" >
+        {{ item.name }}
+      </option>
+    </select>
+</div>
 <div class="formulario">
   <form [formGroup]="autorForm" (ngSubmit)="buscarAutor()">
     <div class="form-group">
-      <label>Buscar autor</label>
+      
+      
       <input type="text" formControlName="nombre" class="form-control">
     </div>
+    
 
 
-    <button type="submit" class="btn btn-primary">Buscar</button>
+    <button type="submit" class="btn btn-primary">Buscar autor</button>
   </form>
 </div>
 
 <div class="formularioRegistro">
-  <p>Buscar Persona</p>
+  <p>Buscar Autor</p>
   <table class="table">
     <thead>
       <tr>
@@ -91,7 +150,7 @@
 </div>
 
 <div class="formularioRegistro">
-  <p>Personas registradas</p>
+  <p>Autores registrados</p>
   <table class="table">
     <thead>
       <tr>

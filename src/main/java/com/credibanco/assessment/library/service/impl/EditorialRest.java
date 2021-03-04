@@ -34,10 +34,17 @@ public class EditorialRest {
 	private ResponseEntity <List<doteditorial>> getAlleditoriales(){//este metodo trae a todas las editoriales
 		//System.out.println("hicieron get");
 		doteditorial dot_editoriales = new doteditorial();
-		return ResponseEntity.ok(dot_editoriales.creardot(null, Editorial_servi,Libro_servi ));
+		return ResponseEntity.ok(dot_editoriales.creardot(null,false, Editorial_servi,Libro_servi ));
 		
 	}
-	
+	@RequestMapping("/editoriales/espacio")//listar editoriales
+	@GetMapping	
+	private ResponseEntity <List<doteditorial>> getAlleditorialesespacio(){//este metodo trae a todas las editoriales
+		//System.out.println("hicieron get");
+		doteditorial dot_editoriales = new doteditorial();
+		return ResponseEntity.ok(dot_editoriales.creardot(null,true, Editorial_servi,Libro_servi ));
+		
+	}
 	
 	@RequestMapping("/editorial/buscar")//buscar por nombre 
 	@GetMapping
@@ -46,7 +53,7 @@ public class EditorialRest {
 		
 		doteditorial dot_editoriales = new doteditorial();
 
-		return ResponseEntity.ok(dot_editoriales.creardot(Editorial_busqueda, Editorial_servi, Libro_servi));//cambiar
+		return ResponseEntity.ok(dot_editoriales.creardot(Editorial_busqueda,false, Editorial_servi, Libro_servi));//cambiar
 		//return ResponseEntity.ok(dot);
 		
 	}

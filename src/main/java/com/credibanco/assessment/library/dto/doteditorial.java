@@ -16,7 +16,7 @@ public class doteditorial implements Serializable {
 	private int libros_editados_int;
 	private String libros_editados;
 	//
-	public List<doteditorial> creardot(String editorial_busqueda,editorial_servi Editorial_servi,libro_servi Libro_servi  ) {
+	public List<doteditorial> creardot(String editorial_busqueda,boolean opcion  ,editorial_servi Editorial_servi,libro_servi Libro_servi  ) {
 		
 		List<doteditorial> Editorial =new ArrayList<>();
 		List<editorial> Editoriales_semejantes =new ArrayList<>();
@@ -30,17 +30,31 @@ public class doteditorial implements Serializable {
 		int contador=0;
 		for (contador =0;contador<Editoriales_semejantes.size();contador++) {
 			//System.out.print(" \n FOR /n");
-			
-			doteditorial dot = new doteditorial();
-			dot.setId(Editoriales_semejantes.get(contador).getId()); 
-			dot.setNombre(Editoriales_semejantes.get(contador).getNombre().toUpperCase());
-			dot.setCorreo(Editoriales_semejantes.get(contador).getCorreo().toLowerCase());					
-			dot.setDireccion_correspondencia(Editoriales_semejantes.get(contador).getDireccion_correspondencia().toLowerCase());
-			dot.setTelefono(Editoriales_semejantes.get(contador).getTelefono());						
-			dot.setMaximo_libros(Editoriales_semejantes.get(contador).getMaximo_libros());			
-			dot.setLibros_editados_int(Libro_servi.findbookeditorialint(Editoriales_semejantes.get(contador).getId()));
-			dot.setLibros_editados(Libro_servi.findbookeditorialstring(Editoriales_semejantes.get(contador).getId()));
-			Editorial.add(dot);
+			if(opcion==false || Editoriales_semejantes.get(contador).getMaximo_libros()==-1) {
+				doteditorial dot = new doteditorial();
+				dot.setId(Editoriales_semejantes.get(contador).getId()); 
+				dot.setNombre(Editoriales_semejantes.get(contador).getNombre().toUpperCase());
+				dot.setCorreo(Editoriales_semejantes.get(contador).getCorreo().toLowerCase());					
+				dot.setDireccion_correspondencia(Editoriales_semejantes.get(contador).getDireccion_correspondencia().toLowerCase());
+				dot.setTelefono(Editoriales_semejantes.get(contador).getTelefono());						
+				dot.setMaximo_libros(Editoriales_semejantes.get(contador).getMaximo_libros());			
+				dot.setLibros_editados_int(Libro_servi.findbookeditorialint(Editoriales_semejantes.get(contador).getId()));
+				dot.setLibros_editados(Libro_servi.findbookeditorialstring(Editoriales_semejantes.get(contador).getId()));
+				Editorial.add(dot);
+			}else {
+				if(Editoriales_semejantes.get(contador).getMaximo_libros()-Libro_servi.findbookeditorialint(Editoriales_semejantes.get(contador).getId())>0) {
+					doteditorial dot = new doteditorial();
+					dot.setId(Editoriales_semejantes.get(contador).getId()); 
+					dot.setNombre(Editoriales_semejantes.get(contador).getNombre().toUpperCase());
+					dot.setCorreo(Editoriales_semejantes.get(contador).getCorreo().toLowerCase());					
+					dot.setDireccion_correspondencia(Editoriales_semejantes.get(contador).getDireccion_correspondencia().toLowerCase());
+					dot.setTelefono(Editoriales_semejantes.get(contador).getTelefono());						
+					dot.setMaximo_libros(Editoriales_semejantes.get(contador).getMaximo_libros());			
+					dot.setLibros_editados_int(Libro_servi.findbookeditorialint(Editoriales_semejantes.get(contador).getId()));
+					dot.setLibros_editados(Libro_servi.findbookeditorialstring(Editoriales_semejantes.get(contador).getId()));
+					Editorial.add(dot);
+				}
+			}
 		}
 		return Editorial;
 	}

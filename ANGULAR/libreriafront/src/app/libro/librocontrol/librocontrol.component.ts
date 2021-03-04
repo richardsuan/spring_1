@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+//import { title } from 'process';
 import { LibroService } from 'src/app/services/libro/libro.service';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-librocontrol',
   templateUrl: './librocontrol.component.html',
@@ -13,6 +14,17 @@ export class LibrocontrolComponent implements OnInit {
   libro:any;
   libros:any;
   libroForm!: FormGroup;
+  id_autores:any;
+  id_editoriales:any;
+  mis_generos = [
+    {name: ''},
+    {name: 'Narrativa'},
+    {name: 'Lirica'},
+    {name: 'Teatro'},
+    {name: 'Ensayo'},
+    
+  ];
+ // const swal = require('sweetalert2');
   constructor(
     public fb: FormBuilder,
     public libroService:LibroService
@@ -20,12 +32,12 @@ export class LibrocontrolComponent implements OnInit {
 
   ngOnInit(): void {
     this.libroForm = this.fb.group({
-      titulo : ['', Validators.required],      
-      ano : ['', Validators.required],
-      genero : ['', Validators.required],
-      paginas : ['', Validators.required],
-      my_autor : ['', Validators.required],
-      my_editorial : ['', Validators.required],
+      titulo : ['', [Validators.required,Validators.maxLength(100)]],      
+      ano : ['', [Validators.required,Validators.maxLength(4),Validators.pattern("^[0-9]*$")]],
+      genero : ['',[ Validators.required,Validators.pattern("[a-zA-Z]*")]],
+      paginas : ['',[ Validators.required,Validators.maxLength(4),Validators.pattern("^[0-9]*$")]],
+      my_autor : ['',[ Validators.required,Validators.maxLength(4),Validators.pattern("^[0-9]*$")]],
+      my_editorial : ['',[ Validators.required,Validators.maxLength(4),Validators.pattern("^[0-9]*$")]]
     })
     this.libroService.getAllLibros().subscribe (resp => {
       this.libros=resp;
@@ -34,15 +46,38 @@ export class LibrocontrolComponent implements OnInit {
     },
       error => { console.error(error) }
     );
-  }
-  guardar(): void {
-      this.libroService.saveLibro(this.libroForm.value).subscribe(resp => {
-      this.libroForm.reset();
-     // this.personas=this.personas.filter(persona=> resp.id!==persona.id);
-      this.libros.push(resp);
+    this.libroService.getAllEditorial().subscribe (resp => {
+      this.id_editoriales=resp;
+      
+      console.log(resp);
     },
       error => { console.error(error) }
-    )
+    );
+
+    this.libroService.getAllAutores().subscribe (resp => {
+      this.id_autores=resp;
+      
+      console.log(resp);
+    },
+      error => { console.error(error) }
+    );
+
+  }
+  guardar(): void {    
+    console.log(this.libroForm.value);
+     if(this.libroForm.valid){ 
+        this.libroService.saveLibro(this.libroForm.value).subscribe(resp => {
+        this.libroForm.reset();
+      // this.personas=this.personas.filter(persona=> resp.id!==persona.id);
+        this.libros.push(resp);
+      },
+        error => { console.error(error) }
+      )
+    }else{
+      console.log("no es valido");
+      console.log(this.libroForm.value);
+     
+    }
   }
   buscarLibro(): void {
     this.libroService.getsimilarLibro(this.libroForm.get("titulo")?.value).subscribe(resp => {
@@ -54,6 +89,41 @@ export class LibrocontrolComponent implements OnInit {
   },
     error => { console.error(error) }
   )
-}
+  }
+  eliminar(libro:any): void {
+    this.libroService.deleteLibro(libro).subscribe(resp => {
+    console.log(resp);
+    this.buscarLibro();
+    if(resp===true){
+      this.libros.pop(libro);
+    }
+  },
+    error => { console.error(error) }
+  )
+  }
+
+    get titulo() { 
+      return this.libroForm.get('titulo'); 
+    }
+    get ano() { 
+      return this.libroForm.get('ano'); 
+    }
+    get genero() { 
+      return this.libroForm.get('genero'); 
+    }
+    get paginas() { 
+      return this.libroForm.get('paginas'); 
+    }
+    get my_autor() { 
+      return this.libroForm.get('my_autor'); 
+    }
+
+    get my_editorial() { 
+      return this.libroForm.get('my_editorial'); 
+    }
+    generos(){
+      return this.mis_generos.values; 
+    }
+    
 
 }

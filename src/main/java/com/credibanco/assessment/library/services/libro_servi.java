@@ -44,10 +44,10 @@ public class libro_servi implements libro_rep {
 			if(t_libros.get(contador).getMy_autor()==id_autor) {
 					
 					libros=libros+" "+t_libros.get(contador).getTitulo();
-				
+					System.out.println(libros);
 			}
 		}
-		
+		System.out.println(libros);
 		return libros;
 		
 	}
