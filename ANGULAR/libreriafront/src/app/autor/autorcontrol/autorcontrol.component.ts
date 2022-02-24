@@ -78,15 +78,18 @@ export class AutorcontrolComponent implements OnInit {
 
   }
   guardar(): void {
-    console.log(this.autorForm.get('lugar_nacimiento').value);
+    console.log("this.autorForm.get('d_identidad').value");
+    console.log(this.autorForm.get('d_identidad').value);
     
     
-    if(this.autorForm.valid) { 
-        this.autorForm.patchValue({
+    this.autorService.getsimilarAutor(this.autorForm.get('d_identidad')?.value,"3").subscribe(resp => {
+      
+      if(this.autorForm.valid && resp==null) { 
+          this.autorForm.patchValue({
           pais: this.autorForm.get('pais').value["nombre"],
           lugar_nacimiento:this.autorForm.get('lugar_nacimiento').value["nombre"]
         });
-       
+        console.log(this.autorForm.value);
         this.autorService.saveAutor(this.autorForm.value).subscribe(resp => {
         this.autorForm.reset();
         this.personas.push(resp);
@@ -95,9 +98,18 @@ export class AutorcontrolComponent implements OnInit {
         error => { console.error(error) }
       )
     }else{
-        console.log('error');
+        console.log('error ya existe');
         console.log(this.autorForm.value);
+        alert("ya existe");
     }
+     
+  },
+    error => { console.error(error) }
+  )
+    
+
+    
+    
   }
   eliminar(persona:any): void {
     this.autorService.deletePersona(persona).subscribe(resp => {
@@ -115,6 +127,9 @@ export class AutorcontrolComponent implements OnInit {
     this.persona=resp;
     
     console.log(resp);
+    if(resp==null){
+      console.log("holaaaaaaaaa");
+    }
   },
     error => { console.error(error) }
   )
