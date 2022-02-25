@@ -12,7 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.banco.assessment.library.model.autor;
-import com.banco.assessment.library.model.libro;
+
 import com.banco.assessment.library.repository.autor_rep;
 
 @Service
