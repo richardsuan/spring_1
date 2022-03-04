@@ -1,187 +1,187 @@
-
-<h2>Autor</h2>
+<h2>
+    Inicio formulario</h2>
 
 
 <div class="formulario">
-  <form [formGroup]="autorForm" (ngSubmit)="guardar()">
+    <form [formGroup]="autorForm" (ngSubmit)="guardar()">
 
 
-    <div class="form-group">
-      <label>Nombre completo</label>
-      <input type="text" formControlName="nombre" class="form-control">
+        <div class="form-group">
+            <label>Nombre completo</label>
+            <input type="text" formControlName="nombre" class="form-control">
 
-      <div class="alert-danger" *ngIf="nombre?.invalid && (nombre?.dirty || nombre?.touched)">
-        <div class="container-error-message" *ngIf="nombre?.errors?.required">
-          Nombre es requerido
-        </div>
-        <div class="container-error-message" *ngIf="nombre?.errors?.minlength">
-          nombre debe tener un largo de 5 caracteres.
-        </div>
+            <div class="alert-danger" *ngIf="nombre?.invalid && (nombre?.dirty || nombre?.touched)">
+                <div class="container-error-message" *ngIf="nombre?.errors?.required">
+                    Nombre es requerido
+                </div>
+                <div class="container-error-message" *ngIf="nombre?.errors?.minlength">
+                    nombre debe tener un largo de 5 caracteres.
+                </div>
 
-        <div class="container-error-message" *ngIf="nombre?.errors?.pattern">
-          nombre solo debe tener letras.
-        </div>
-      </div>
-      
-    </div>
+                <div class="container-error-message" *ngIf="nombre?.errors?.pattern">
+                    nombre solo debe tener letras.
+                </div>
+            </div>
 
-    <div class="form-group">
-      <label>Documento de identidad</label>
-      <input type="text" formControlName="d_identidad" class="form-control">
-
-      <div class="alert-danger" *ngIf="d_identidad?.invalid && (d_identidad?.dirty || d_identidad?.touched)">
-        <div class="container-error-message" *ngIf="d_identidad?.errors?.required">
-          El numero de documento es  requerido
-        </div>
-        <div class="container-error-message" *ngIf="d_identidad?.errors?.maxlength">
-          maximo 12 digitos.
         </div>
 
-        <div class="container-error-message" *ngIf="d_identidad?.errors?.pattern">
-           Solo debe tener numeros.
+        <div class="form-group">
+            <label>Documento de identidad</label>
+            <input type="text" formControlName="d_identidad" class="form-control">
+
+            <div class="alert-danger" *ngIf="d_identidad?.invalid && (d_identidad?.dirty || d_identidad?.touched)">
+                <div class="container-error-message" *ngIf="d_identidad?.errors?.required">
+                    El numero de documento es requerido
+                </div>
+                <div class="container-error-message" *ngIf="d_identidad?.errors?.maxlength">
+                    maximo 12 digitos.
+                </div>
+
+                <div class="container-error-message" *ngIf="d_identidad?.errors?.pattern">
+                    Solo debe tener numeros.
+                </div>
+            </div>
+
         </div>
-      </div>
 
-    </div>
+        <div class="form-group">
+            <label>Fecha de nacimiento</label>
+            <input type="date" max="2006-01-01" min="1921-01-01" formControlName="fecha_nacimiento" class="form-control">
+        </div>
 
-    <div class="form-group">
-      <label>Fecha de nacimiento</label>
-      <input type="date" max="2006-01-01" min="1921-01-01" formControlName="fecha_nacimiento" class="form-control">
-    </div>
-
-    <div class="form-group">
-      <label>Pais</label>
-      <select name="pais" id="pais" formControlName="pais" class="form-control">
+        <div class="form-group">
+            <label>Pais</label>
+            <select name="pais" id="pais" formControlName="pais" class="form-control">
         <option [ngValue]="item" *ngFor="let item of paises">{{item.nombre}}</option>
       </select>
-    </div>
-    <div class="form-group">
-      <label>Estado o región</label>
-      <select name="estado" id="estado" formControlName="lugar_nacimiento" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Estado o región</label>
+            <select name="estado" id="estado" formControlName="lugar_nacimiento" class="form-control">
         <option [ngValue]="item" *ngFor="let item of estados">{{item.nombre}}</option>
       </select>
-    </div>
-
-    <div class="form-group">
-      <label>Correo</label>
-      <input type="email" formControlName="correo" class="form-control">
-
-      
-      <div class="alert-danger" *ngIf="correo?.invalid && (correo?.dirty || correo?.touched)">
-        <div class="container-error-message" *ngIf="correo?.errors?.required">
-          El correo  es  requerido
         </div>
 
-        <div class="alert-danger" *ngIf="correo?.invalid && (correo?.dirty || correo?.touched)">
-          <div class="container-error-message" *ngIf="correo?.errors?.maxlength">
-            Maximo 400 caracteres
-          </div>  
-        </div>  
-        <div class="container-error-message" *ngIf="correo?.errors?.pattern">
-           Correo invalido.
+        <div class="form-group">
+            <label>Correo</label>
+            <input type="email" formControlName="correo" class="form-control">
+
+
+            <div class="alert-danger" *ngIf="correo?.invalid && (correo?.dirty || correo?.touched)">
+                <div class="container-error-message" *ngIf="correo?.errors?.required">
+                    El correo es requerido
+                </div>
+
+                <div class="alert-danger" *ngIf="correo?.invalid && (correo?.dirty || correo?.touched)">
+                    <div class="container-error-message" *ngIf="correo?.errors?.maxlength">
+                        Maximo 400 caracteres
+                    </div>
+                </div>
+                <div class="container-error-message" *ngIf="correo?.errors?.pattern">
+                    Correo invalido.
+                </div>
+            </div>
+
         </div>
-      </div>
-
-    </div>
 
 
-    <button type="submit" class="btn btn-primary">Guardar autor</button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
 
-  </form>
+    </form>
 </div>
 <br>
 <br>
 <div class="formulario">
-  <label>Selecione el tipo de busqueda</label>
-  <select [(ngModel)]="opcionSeleccionado" (change)="capturar()" class="form-control">
+    <label>Selecione el tipo de busqueda</label>
+    <select [(ngModel)]="opcionSeleccionado" (change)="capturar()" class="form-control">
       <option *ngFor="let item of busqueda" [ngValue]="item" >
         {{ item.name }}
       </option>
     </select>
 </div>
 <div class="formulario">
-  <form [formGroup]="autorForm" (ngSubmit)="buscarAutor()">
-    <div class="form-group">
-      
-      
-      <input type="text" formControlName="nombre" class="form-control">
-    </div>
-    
+    <form [formGroup]="autorForm" (ngSubmit)="buscarAutor()">
+        <div class="form-group">
 
 
-    <button type="submit" class="btn btn-primary">Buscar autor</button>
-  </form>
+            <input type="text" formControlName="nombre" class="form-control">
+        </div>
+
+
+
+        <button type="submit" class="btn btn-primary">Buscar </button>
+    </form>
 </div>
 
 <div class="formularioRegistro">
-  <p>Buscar Autor</p>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Id DB</th>
-        <th># Documento</th>
-        <th>Nombre</th>
-        <th>fecha nacimiento</th>
-        <th>pais de nacimiento</th>
-        <th>Ciudad de nacimiento</th>
-        <th>correo</th>
-        <th>libros escritos</th>
-      
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of persona">
-        <td>{{item.id}}</td>
-        <td>{{item.d_identidad}}</td>
-        <td>{{item.nombre}}</td>
+    <p>Buscar Autor</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id DB</th>
+                <th># Documento</th>
+                <th>Nombre</th>
+                <th>fecha nacimiento</th>
+                <th>pais de nacimiento</th>
+                <th>Ciudad de nacimiento</th>
+                <th>correo</th>
 
-        <td>{{item.fecha_nacimiento}}</td>
-        <td>{{item.pais}}</td>
-        <td>{{item.lugar_nacimiento}}</td>
-        
-        <td>{{item.correo}}</td>
-        <td>{{item.libros_escritos}}</td>
-        <td>
-         
-        </td>
-      </tr>
-    </tbody>
-  </table>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of persona">
+                <td>{{item.id}}</td>
+                <td>{{item.d_identidad}}</td>
+                <td>{{item.nombre}}</td>
+
+                <td>{{item.fecha_nacimiento}}</td>
+                <td>{{item.pais}}</td>
+                <td>{{item.lugar_nacimiento}}</td>
+
+                <td>{{item.correo}}</td>
+
+                <td>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
 <div class="formularioRegistro">
-  <p>Autores registrados</p>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Id DB</th>
-        <th># Documento</th>
-        <th>Nombre</th>
-        <th>fecha nacimiento</th>
-        <th>pais de nacimiento</th>
-        <th>Ciudad de nacimiento</th>
-        <th>correo</th>
-        <th>libros escritos</th>
-        <th>Opciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of personas">
-        <td>{{item.id}}</td>
-        <td>{{item.d_identidad}}</td>
-        <td>{{item.nombre}}</td>
+    <p>Autores registrados</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id DB</th>
+                <th># Documento</th>
+                <th>Nombre</th>
+                <th>fecha nacimiento</th>
+                <th>pais de nacimiento</th>
+                <th>Ciudad de nacimiento</th>
+                <th>correo</th>
 
-        <td>{{item.fecha_nacimiento}}</td>
-        <td>{{item.pais}}</td>
-        <td>{{item.lugar_nacimiento}}</td>
-        
-        <td>{{item.correo}}</td>
-        <td>{{item.libros_escritos}}</td>
-        <td>
-          
-          <button type="button" class="btn btn-danger" (click)="eliminar(item)">Eliminar</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of personas">
+                <td>{{item.id}}</td>
+                <td>{{item.d_identidad}}</td>
+                <td>{{item.nombre}}</td>
+
+                <td>{{item.fecha_nacimiento}}</td>
+                <td>{{item.pais}}</td>
+                <td>{{item.lugar_nacimiento}}</td>
+
+                <td>{{item.correo}}</td>
+
+                <td>
+
+                    <button type="button" class="btn btn-danger" (click)="eliminar(item)">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

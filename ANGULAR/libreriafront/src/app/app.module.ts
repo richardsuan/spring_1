@@ -7,8 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
-import { LibroModule } from './libro/libro.module';
-import { EditorialModule } from './editorial/editorial.module';
+
 import { AutorModule } from './autor/autor.module';
 import { InicioModule } from './inicio/inicio.module';
 
@@ -28,8 +27,7 @@ import { InicioModule } from './inicio/inicio.module';
     BrowserAnimationsModule,
     HttpClientModule,
     
-    LibroModule ,
-    EditorialModule,
+  
     AutorModule,
     InicioModule
   ],
