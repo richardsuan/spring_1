@@ -1,9 +1,8 @@
 package com.credibanco.assessment.library.repository;
 
+import com.credibanco.assessment.library.model.user;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.credibanco.assessment.library.model.autor;
-
-public interface autor_rep  extends JpaRepository<autor, Long>{
+public interface user_rep extends JpaRepository<user, Long>{
 
 }

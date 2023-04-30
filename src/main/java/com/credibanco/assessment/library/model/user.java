@@ -1,16 +1,10 @@
 package com.credibanco.assessment.library.model;
 
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -19,7 +13,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table (name="Autor")
-public class autor {
+public class user {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long  id;
@@ -35,7 +29,7 @@ public class autor {
     
 
 	
-	public autor() {
+	public user() {
 			
 	}
 
@@ -138,8 +132,8 @@ public class autor {
 
 
 
-	public autor(Long d_identidad, String nombre, String fecha_nacimiento, String lugar_nacimiento, String correo,
-			String pais, String libros_escritos) {
+	public user(Long d_identidad, String nombre, String fecha_nacimiento, String lugar_nacimiento, String correo,
+				String pais, String libros_escritos) {
 		super();
 		this.d_identidad = d_identidad;
 		this.nombre = nombre;

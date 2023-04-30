@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name="Libro")
-public class libro {
+public class tarjeta {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long  id;
@@ -17,7 +17,6 @@ public class libro {
 	private String genero;
 	private  int paginas;
 	private Long  my_autor;
-	private Long  my_editorial;
 	//esto se hace para hacer las relaciones 	
 	
 /*
@@ -30,7 +29,7 @@ public class libro {
     @JoinColumn(name = "editorial_id")
     private editorial my_editorial;
   */  
-	public libro() {
+	public tarjeta() {
 		
 	}
 
@@ -81,26 +80,12 @@ public class libro {
 	public void setMy_autor(Long my_autor) {
 		this.my_autor = my_autor;
 	}
-
-	public Long getMy_editorial() {
-		return my_editorial;
-	}
-
-	public void setMy_editorial(Long my_editorial) {
-		this.my_editorial = my_editorial;
-	}
-
-	public libro(String titulo, String ano, String genero, int paginas, Long my_autor, Long my_editorial) {
+	public tarjeta(String titulo, String ano, String genero, int paginas, Long my_autor, Long my_editorial) {
 		super();
 		this.titulo = titulo;
 		this.ano = ano;
 		this.genero = genero;
 		this.paginas = paginas;
 		this.my_autor = my_autor;
-		this.my_editorial = my_editorial;
 	}
-
-	
-	
-	
 }
