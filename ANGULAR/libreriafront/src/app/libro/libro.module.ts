@@ -12,7 +12,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
   declarations: [LibrocontrolComponent],
   imports: [
     CommonModule,
-    BrowserModule,    
+    BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
@@ -20,6 +20,6 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     SweetAlert2Module
 
   ],
-  exports:[LibrocontrolComponent]
+  exports: [LibrocontrolComponent]
 })
 export class LibroModule { }

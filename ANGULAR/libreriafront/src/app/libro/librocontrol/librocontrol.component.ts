@@ -1,129 +1,107 @@
 import { Component, OnInit } from '@angular/core';
-
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-//import { title } from 'process';
 import { LibroService } from 'src/app/services/libro/libro.service';
-import Swal from 'sweetalert2';
 @Component({
   selector: 'app-librocontrol',
   templateUrl: './librocontrol.component.html',
   styleUrls: ['./librocontrol.component.css']
 })
 export class LibrocontrolComponent implements OnInit {
-  //libro
-  libro:any;
-  libros:any;
+  // libro
+
+  libro: any;
+  libros: any;
   libroForm!: FormGroup;
-  id_autores:any;
-  id_editoriales:any;
-  mis_generos = [
+  idAutores: any;
+  idEditoriales: any;
+  misGeneros = [
     {name: ''},
     {name: 'Narrativa'},
     {name: 'Lirica'},
     {name: 'Teatro'},
     {name: 'Ensayo'},
-    
+
   ];
- // const swal = require('sweetalert2');
   constructor(
     public fb: FormBuilder,
-    public libroService:LibroService
+    public libroService: LibroService
   ) { }
-
+  // 78
   ngOnInit(): void {
     this.libroForm = this.fb.group({
-      titulo : ['', [Validators.required,Validators.maxLength(100)]],      
-      ano : ['', [Validators.required,Validators.maxLength(4),Validators.pattern("^[0-9]*$")]],
-      genero : ['',[ Validators.required,Validators.pattern("[a-zA-Z]*")]],
-      paginas : ['',[ Validators.required,Validators.maxLength(4),Validators.pattern("^[0-9]*$")]],
-      my_autor : ['',[ Validators.required,Validators.maxLength(4),Validators.pattern("^[0-9]*$")]],
-      my_editorial : ['',[ Validators.required,Validators.maxLength(4),Validators.pattern("^[0-9]*$")]]
-    })
-    this.libroService.getAllLibros().subscribe (resp => {
-      this.libros=resp;
-    
-      console.log(resp);
-    },
-      error => { console.error(error) }
-    );
-    this.libroService.getAllEditorial().subscribe (resp => {
-      this.id_editoriales=resp;
-      
-      console.log(resp);
-    },
-      error => { console.error(error) }
-    );
+      titulo : ['', [Validators.required, Validators.maxLength(100)]],
+      ano : ['', [Validators.required, Validators.maxLength(4), Validators.pattern('^[0-9]*$')]],
+      genero : ['', [ Validators.required, Validators.pattern('[a-zA-Z]*')]],
+      paginas : ['', [ Validators.required, Validators.maxLength(4), Validators.pattern('^[0-9]*$')]],
+      my_autor : ['', [ Validators.required, Validators.maxLength(4), Validators.pattern('^[0-9]*$')]]
+    });
+    this.libroService.getAllLibros().subscribe (res => {
+      this.libros = res;
 
-    this.libroService.getAllAutores().subscribe (resp => {
-      this.id_autores=resp;
-      
-      console.log(resp);
+      console.log(res);
     },
-      error => { console.error(error) }
+      error => { console.error(error); }
     );
-
+    this.libroService.getAllAutores().subscribe (res => {
+      this.idAutores = res;
+      console.log(res);
+    },
+      error => { console.error(error); }
+    );
   }
-  guardar(): void {    
+  guardar(): void {
     console.log(this.libroForm.value);
-     if(this.libroForm.valid){ 
-        this.libroService.saveLibro(this.libroForm.value).subscribe(resp => {
+     if (this.libroForm.valid){
+        this.libroService.saveLibro(this.libroForm.value).subscribe(res => {
         this.libroForm.reset();
-      // this.personas=this.personas.filter(persona=> resp.id!==persona.id);
-        this.libros.push(resp);
+        this.libros.push(res);
       },
-        error => { console.error(error) }
-      )
+        error => { console.error(error); }
+      );
     }else{
-      console.log("no es valido");
+      console.log('no es valido');
       console.log(this.libroForm.value);
-     
     }
   }
   buscarLibro(): void {
-    this.libroService.getsimilarLibro(this.libroForm.get("titulo")?.value).subscribe(resp => {
-    this.libro=resp;
-    console.log(this.libroForm.get("titulo")?.value);
-    //this.autorForm.reset();
-   // this.personas=this.personas.filter(persona=> resp.id!==persona.id);
-    //this.personas.push(resp);
+    this.libroService.getsimilarLibro(this.libroForm.get('titulo')?.value).subscribe(res => {
+    this.libro = res;
+    console.log(this.libroForm.get('titulo')?.value);
   },
-    error => { console.error(error) }
-  )
+    error => { console.error(error); }
+  );
   }
-  eliminar(libro:any): void {
-    this.libroService.deleteLibro(libro).subscribe(resp => {
-    console.log(resp);
+  eliminar(libro: any): void {
+    this.libroService.deleteLibro(libro).subscribe(res => {
+    console.log(res);
     this.buscarLibro();
-    if(resp===true){
+    if (res === true){
       this.libros.pop(libro);
     }
   },
-    error => { console.error(error) }
-  )
+    error => { console.error(error); }
+  );
   }
 
-    get titulo() { 
-      return this.libroForm.get('titulo'); 
+    get titulo() {
+      return this.libroForm.get('titulo');
     }
-    get ano() { 
-      return this.libroForm.get('ano'); 
+    get ano() {
+      return this.libroForm.get('ano');
     }
-    get genero() { 
-      return this.libroForm.get('genero'); 
+    get genero() {
+      return this.libroForm.get('genero');
     }
-    get paginas() { 
-      return this.libroForm.get('paginas'); 
+    get paginas() {
+      return this.libroForm.get('paginas');
     }
-    get my_autor() { 
-      return this.libroForm.get('my_autor'); 
+    get my_autor() {
+      return this.libroForm.get('my_autor');
     }
-
-    get my_editorial() { 
-      return this.libroForm.get('my_editorial'); 
+    get my_editorial() {
+      return this.libroForm.get('my_editorial');
     }
     generos(){
-      return this.mis_generos.values; 
+      return this.misGeneros.values;
     }
-    
-
 }

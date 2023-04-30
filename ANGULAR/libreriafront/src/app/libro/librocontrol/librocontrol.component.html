@@ -3,7 +3,7 @@
 
 <div class="formulario">
   <form [formGroup] ="libroForm" (ngSubmit)="guardar()">
-    
+
 
     <div class="form-group">
       <label>Titulo</label>
@@ -17,12 +17,12 @@
         <div class="alert-danger" *ngIf="titulo?.invalid && (titulo?.dirty || titulo?.touched)">
           <div class="container-error-message" *ngIf="titulo?.errors?.maxlength">
             Maximo 100 caracteres
-          </div>  
-        </div>         
+          </div>
+        </div>
       </div>
     </div>
 
-    
+
     <div class="form-group">
       <label>Año</label>
       <input type="text"  formControlName="ano" class="form-control">
@@ -34,9 +34,9 @@
         <div class="alert-danger" *ngIf="ano?.invalid && (ano?.dirty || ano?.touched)">
           <div class="container-error-message" *ngIf="ano?.errors?.maxlength">
             Maximo 4 digitos
-          </div>  
-        </div>    
-        
+          </div>
+        </div>
+
         <div class="container-error-message" *ngIf="ano?.errors?.pattern">
           Ingrese solo numeros.
        </div>
@@ -47,7 +47,7 @@
   <div class="form-group">
     <label>Genero</label>
     <select formControlName="genero" class="form-control">
-      <option *ngFor="let mis_generos of mis_generos" >
+      <option *ngFor="let mis_generos of misGeneros" >
         {{ mis_generos.name }}
       </option>
     </select>
@@ -57,7 +57,7 @@
       </div>
     </div>
   </div>
-    
+
 
     <div class="form-group">
       <label>Numero de paginas</label>
@@ -70,9 +70,9 @@
         <div class="alert-danger" *ngIf="paginas?.invalid && (paginas?.dirty || paginas?.touched)">
           <div class="container-error-message" *ngIf="paginas?.errors?.maxlength">
             Maximo 4 digitos
-          </div>  
-        </div>    
-        
+          </div>
+        </div>
+
         <div class="container-error-message" *ngIf="paginas?.errors?.pattern">
           Ingrese solo numeros.
        </div>
@@ -83,9 +83,9 @@
     <div class="form-group">
       <label>Id del autor</label>
       <select  formControlName="my_autor" class="form-control">
-        <option [ngValue]="id_autores.id"*ngFor="let id_autores of id_autores">{{id_autores.nombre}}</option>
+        <option [ngValue]="id_autores.id"*ngFor="let id_autores of idAutores">{{id_autores.nombre}}</option>
       </select>
-      
+
     </div>
     <!--
     <div class="form-group">
@@ -96,20 +96,12 @@
           El Id del autor es requerido
         </div>
 
-        
+
 
       </div>
     </div>-->
-
-    <div class="form-group">
-      <label>Id de la editorial</label>
-      <select  formControlName="my_editorial" class="form-control">
-        <option [ngValue]="id_editoriales.id" *ngFor="let id_editoriales of id_editoriales">{{id_editoriales.nombre}}</option>
-      </select>
-    </div>
-    
     <button type="submit" class="btn btn-primary" >Guardar</button>
-    
+
   </form>
 </div>
 
@@ -120,9 +112,9 @@
       <input type="text" formControlName="titulo" class="form-control">
     </div>
 
-    
+
     <button type="submit" class="btn btn-primary" >Buscar</button>
-  </form>   
+  </form>
 </div>
 
 
@@ -134,24 +126,24 @@
       <tr>
         <th>Titulo</th>
         <th>Año</th>
-        <th>Genero</th>        
+        <th>Genero</th>
         <th># de paginas</th>
         <th>Autor</th>
         <th>Editorial</th>
-        
-      
+
+
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let item of libro">
         <td>{{item.titulo}}</td>
-        <td>{{item.ano}}</td>        
+        <td>{{item.ano}}</td>
         <td>{{item.genero}}</td>
-        <td>{{item.paginas}}</td>        
-        <td>{{item.my_autor}}</td>        
+        <td>{{item.paginas}}</td>
+        <td>{{item.my_autor}}</td>
         <td>{{item.my_editorial}}</td>
-        
-        
+
+
       </tr>
     </tbody>
   </table>
@@ -164,25 +156,23 @@
       <tr>
         <th>Titulo</th>
         <th>Año</th>
-        <th>Genero</th>        
+        <th>Genero</th>
         <th># de paginas</th>
         <th>Autor</th>
         <th>Editorial</th>
-        
-        
-      
+
+
+
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let item of libros">
         <td>{{item.titulo}}</td>
-        <td>{{item.ano}}</td>        
+        <td>{{item.ano}}</td>
         <td>{{item.genero}}</td>
-        <td>{{item.paginas}}</td>        
-        <td>{{item.my_autor}}</td>        
+        <td>{{item.paginas}}</td>
+        <td>{{item.my_autor}}</td>
         <td>{{item.my_editorial}}</td>
-        
-        
         <td>
           <button type="button" class="btn btn-danger" (click)="eliminar(item)">Eliminar</button>
         </td>

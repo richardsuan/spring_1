@@ -22,7 +22,7 @@
           nombre solo debe tener letras.
         </div>
       </div>
-      
+
     </div>
 
     <div class="form-group">
@@ -48,25 +48,11 @@
       <label>Fecha de nacimiento</label>
       <input type="date" max="2006-01-01" min="1921-01-01" formControlName="fecha_nacimiento" class="form-control">
     </div>
-
-    <div class="form-group">
-      <label>Pais</label>
-      <select name="pais" id="pais" formControlName="pais" class="form-control">
-        <option [ngValue]="item" *ngFor="let item of paises">{{item.nombre}}</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label>Estado o región</label>
-      <select name="estado" id="estado" formControlName="lugar_nacimiento" class="form-control">
-        <option [ngValue]="item" *ngFor="let item of estados">{{item.nombre}}</option>
-      </select>
-    </div>
-
     <div class="form-group">
       <label>Correo</label>
       <input type="email" formControlName="correo" class="form-control">
 
-      
+
       <div class="alert-danger" *ngIf="correo?.invalid && (correo?.dirty || correo?.touched)">
         <div class="container-error-message" *ngIf="correo?.errors?.required">
           El correo  es  requerido
@@ -75,8 +61,8 @@
         <div class="alert-danger" *ngIf="correo?.invalid && (correo?.dirty || correo?.touched)">
           <div class="container-error-message" *ngIf="correo?.errors?.maxlength">
             Maximo 400 caracteres
-          </div>  
-        </div>  
+          </div>
+        </div>
         <div class="container-error-message" *ngIf="correo?.errors?.pattern">
            Correo invalido.
         </div>
@@ -102,11 +88,11 @@
 <div class="formulario">
   <form [formGroup]="autorForm" (ngSubmit)="buscarAutor()">
     <div class="form-group">
-      
-      
+
+
       <input type="text" formControlName="nombre" class="form-control">
     </div>
-    
+
 
 
     <button type="submit" class="btn btn-primary">Buscar autor</button>
@@ -122,11 +108,9 @@
         <th># Documento</th>
         <th>Nombre</th>
         <th>fecha nacimiento</th>
-        <th>pais de nacimiento</th>
-        <th>Ciudad de nacimiento</th>
         <th>correo</th>
         <th>libros escritos</th>
-      
+
       </tr>
     </thead>
     <tbody>
@@ -134,15 +118,10 @@
         <td>{{item.id}}</td>
         <td>{{item.d_identidad}}</td>
         <td>{{item.nombre}}</td>
-
         <td>{{item.fecha_nacimiento}}</td>
-        <td>{{item.pais}}</td>
-        <td>{{item.lugar_nacimiento}}</td>
-        
         <td>{{item.correo}}</td>
         <td>{{item.libros_escritos}}</td>
         <td>
-         
         </td>
       </tr>
     </tbody>
@@ -158,8 +137,6 @@
         <th># Documento</th>
         <th>Nombre</th>
         <th>fecha nacimiento</th>
-        <th>pais de nacimiento</th>
-        <th>Ciudad de nacimiento</th>
         <th>correo</th>
         <th>libros escritos</th>
         <th>Opciones</th>
@@ -170,15 +147,10 @@
         <td>{{item.id}}</td>
         <td>{{item.d_identidad}}</td>
         <td>{{item.nombre}}</td>
-
         <td>{{item.fecha_nacimiento}}</td>
-        <td>{{item.pais}}</td>
-        <td>{{item.lugar_nacimiento}}</td>
-        
         <td>{{item.correo}}</td>
         <td>{{item.libros_escritos}}</td>
         <td>
-          
           <button type="button" class="btn btn-danger" (click)="eliminar(item)">Eliminar</button>
         </td>
       </tr>

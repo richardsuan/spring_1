@@ -8,7 +8,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 import { LibroModule } from './libro/libro.module';
-import { EditorialModule } from './editorial/editorial.module';
 import { AutorModule } from './autor/autor.module';
 import { InicioModule } from './inicio/inicio.module';
 
@@ -17,8 +16,8 @@ import { InicioModule } from './inicio/inicio.module';
 @NgModule({
   declarations: [
     AppComponent,
-  
-    
+
+
   ],
   imports: [
     BrowserModule,
@@ -27,9 +26,7 @@ import { InicioModule } from './inicio/inicio.module';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    
     LibroModule ,
-    EditorialModule,
     AutorModule,
     InicioModule
   ],

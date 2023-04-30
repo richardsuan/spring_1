@@ -26,9 +26,7 @@ public class autor {
 	private Long  d_identidad;
 	private String nombre;
 	private String  fecha_nacimiento;
-	private String lugar_nacimiento;
 	private String correo;
-	private String pais;
 	private String  libros_escritos;
 	//private String libros_escritos;
 	//esto se hace para hacer las relaciones 
@@ -109,20 +107,6 @@ public class autor {
 
 
 
-	public String getLugar_nacimiento() {
-		return lugar_nacimiento;
-	}
-
-
-
-
-
-	public void setLugar_nacimiento(String lugar_nacimiento) {
-		this.lugar_nacimiento = lugar_nacimiento;
-	}
-
-
-
 
 
 	public String getCorreo() {
@@ -136,25 +120,6 @@ public class autor {
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
-
-
-
-
-
-	public String getPais() {
-		return pais;
-	}
-
-
-
-
-
-	public void setPais(String pais) {
-		this.pais = pais;
-	}
-
-
-
 
 
 	public String getLibros_escritos() {
@@ -179,9 +144,7 @@ public class autor {
 		this.d_identidad = d_identidad;
 		this.nombre = nombre;
 		this.fecha_nacimiento = fecha_nacimiento;
-		this.lugar_nacimiento = lugar_nacimiento;
 		this.correo = correo;
-		this.pais = pais;
 		this.libros_escritos = libros_escritos;
 	}
 	

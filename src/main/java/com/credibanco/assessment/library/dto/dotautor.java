@@ -17,13 +17,13 @@ public class dotautor implements Serializable{
 	private String correo;
 	private String  libros_escritos;
 	
-	public List<dotautor> creardot(String valor_busqueda,String tipo,autor_servi Autor_servi,libro_servi Libro_servi  ) {
+	public List<dotautor> creardot(String valorBusqueda,String tipo,autor_servi Autor_servi,libro_servi Libro_servi  ) {
 		//System.out.print("dot "+autor_busqueda+"\n");
 		List<dotautor> Autor =new ArrayList<>();
 		List<autor> Autores_semejantes =new ArrayList<>();
-		if(valor_busqueda!=null) {
-			System.out.print("dot if \n"+valor_busqueda);
-			Autores_semejantes.addAll(Autor_servi.findAllByName(valor_busqueda.toUpperCase(),tipo));
+		if(valorBusqueda!=null) {
+			System.out.print("dot if \n"+valorBusqueda);
+			Autores_semejantes.addAll(Autor_servi.findAllByName(valorBusqueda.toUpperCase(),tipo));
 		}else {
 			Autores_semejantes.addAll(Autor_servi.findAll());//esto se hace para pedir todos los autores
 		}
@@ -36,13 +36,9 @@ public class dotautor implements Serializable{
 			dot.setD_identidad(Autores_semejantes.get(contador).getD_identidad());
 			dot.setNombre(Autores_semejantes.get(contador).getNombre().toUpperCase());
 			dot.setCorreo(Autores_semejantes.get(contador).getCorreo().toLowerCase());
-			dot.setLugar_nacimiento(Autores_semejantes.get(contador).getLugar_nacimiento().toUpperCase());
-			dot.setPais(Autores_semejantes.get(contador).getPais().toUpperCase());
 			dot.setFecha_nacimiento(Autores_semejantes.get(contador).getFecha_nacimiento());
-			
 			dot.setLibros_escritos(Libro_servi.findbookAutorstring(Autores_semejantes.get(contador).getId()));
 			Autor.add(dot);
-			
 		}
 		return Autor;
 	}
@@ -77,44 +73,31 @@ public class dotautor implements Serializable{
 		this.correo = correo;
 		this.libros_escritos = libros_escritos;
 	}
-
 	//aqui se crean los get y set 
 	public String getNombre() {
 		return nombre;
 	}
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
 	public String getFecha_nacimiento() {
 		return fecha_nacimiento;
 	}
-
 	public void setFecha_nacimiento(String fecha_nacimiento) {
 		this.fecha_nacimiento = fecha_nacimiento;
 	}
-
 	public String getLugar_nacimiento() {
 		return lugar_nacimiento;
 	}
-
-	public void setLugar_nacimiento(String lugar_nacimiento) {
-		this.lugar_nacimiento = lugar_nacimiento;
-	}
-
 	public String getCorreo() {
 		return correo;
 	}
-
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
-
 	public String getLibros_escritos() {
 		return libros_escritos;
 	}
-
 	public void setLibros_escritos(String libros_escritos) {
 		this.libros_escritos = libros_escritos;
 	}

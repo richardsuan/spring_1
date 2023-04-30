@@ -8,30 +8,26 @@ export class LibroService {
 
   constructor(private httpClient: HttpClient) { }
 
-  private API_SERVER = "http://localhost:8080/"; 
-  public getAllLibros(): Observable<any>{//trae todos los autores 
-    return this.httpClient.get(this.API_SERVER+"libros/");
+  private API_SERVER = 'http://localhost:8181/';
+  public getAllLibros(): Observable<any>{
+    return this.httpClient.get(this.API_SERVER + 'libros/');
   }
 
-  public saveLibro (libro:any): Observable<any>{//guarda un autor
+  public saveLibro(libro: any): Observable<any>{
     console.log(libro);
-    return this.httpClient.post(this.API_SERVER+"libro/agregar/",libro);
+    return this.httpClient.post(this.API_SERVER + 'libro/agregar/', libro);
   }
-  public getsimilarLibro (libro:any): Observable<any>{//guarda un autor
+  public getsimilarLibro(libro: any): Observable<any>{
     console.log(libro);
-    let params = new HttpParams().set('titulo', libro);
-    console.log(this.API_SERVER+"autor/buscar",{​​ params: params });
-    return this.httpClient.get<any>(this.API_SERVER+"libro/buscar",{​​ params: params });
+    const params = new HttpParams().set('titulo', libro);
+    console.log(this.API_SERVER + 'autor/buscar', { params });
+    return this.httpClient.get<any>(this.API_SERVER + 'libro/buscar',{ params });
   }
-  public deleteLibro(libro:any):Observable<any>{//borra un autor
+  public deleteLibro(libro: any): Observable<any>{// borra un autor
     console.log(libro.id);
-    return this.httpClient.delete(this.API_SERVER + "libro/eliminar/"+libro.id);
+    return this.httpClient.delete(this.API_SERVER + 'libro/eliminar/' + libro.id);
   }
-
-  public getAllEditorial(): Observable<any>{//trae todos los autores 
-    return this.httpClient.get(this.API_SERVER+"editoriales/espacio");
-  }//
-  public getAllAutores(): Observable<any>{//trae todos los autores 
-    return this.httpClient.get(this.API_SERVER+"autores/");
+  public getAllAutores(): Observable<any>{// trae todos los autores
+    return this.httpClient.get(this.API_SERVER + 'autores/');
   }
 }
