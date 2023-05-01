@@ -16,19 +16,7 @@ public class tarjeta {
 	private String ano;
 	private String genero;
 	private  int paginas;
-	private Long  my_autor;
-	//esto se hace para hacer las relaciones 	
-	
-/*
-    @ManyToOne()
-    @JoinColumn(name = "autor_id")
-    private autor my_autor;
-	
-
-    @ManyToOne()
-    @JoinColumn(name = "editorial_id")
-    private editorial my_editorial;
-  */  
+	private Long  myUser;
 	public tarjeta() {
 		
 	}
@@ -73,19 +61,19 @@ public class tarjeta {
 		this.paginas = paginas;
 	}
 
-	public Long getMy_autor() {
-		return my_autor;
+	public Long getMyUser() {
+		return myUser;
 	}
 
-	public void setMy_autor(Long my_autor) {
-		this.my_autor = my_autor;
+	public void setMyUser(Long myUser) {
+		this.myUser = myUser;
 	}
-	public tarjeta(String titulo, String ano, String genero, int paginas, Long my_autor, Long my_editorial) {
+	public tarjeta(String titulo, String ano, String genero, int paginas, Long myUser) {
 		super();
 		this.titulo = titulo;
 		this.ano = ano;
 		this.genero = genero;
 		this.paginas = paginas;
-		this.my_autor = my_autor;
+		this.myUser = myUser;
 	}
 }

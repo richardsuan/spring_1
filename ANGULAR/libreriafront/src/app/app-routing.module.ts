@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AutorcontrolComponent } from './autor/autorcontrol/autorcontrol.component';
+import { UsercontrolComponent } from './user/usercontrol/usercontrol.component';
 import { InicioComponent } from './inicio/inicio/inicio.component';
-import { LibrocontrolComponent } from './libro/librocontrol/librocontrol.component';
+import { TarjetacontrolComponent } from './tarjeta/tarjetacontrol/tarjetacontrol.component';
 
 
 
 const routes: Routes = [
   { path: '', component: InicioComponent},
-  { path: 'autor', component: AutorcontrolComponent},
-  { path: 'libro', component: LibrocontrolComponent},
+  { path: 'user', component: UsercontrolComponent},
+  { path: 'tarjeta', component: TarjetacontrolComponent},
   { path: '**', component: InicioComponent }
 ];
 @NgModule({

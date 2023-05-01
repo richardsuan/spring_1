@@ -20,10 +20,10 @@ public class dotuser implements Serializable{
 	
 	public List<dotuser> creardot(String valorBusqueda, String tipo, user_servi User_servi, tarjeta_servi Tarjeta_servi  ) {
 		//System.out.print("dot "+autor_busqueda+"\n");
-		List<dotuser> Autor =new ArrayList<>();
+		List<dotuser> User =new ArrayList<>();
 		List<user> autores_semejantes =new ArrayList<>();
-		if(valorBusqueda!=null) {
-			System.out.print("dot if \n"+valorBusqueda);
+		if(valorBusqueda != null) {
+			System.out.print("dot if \n" + valorBusqueda);
 			autores_semejantes.addAll(User_servi.findAllByName(valorBusqueda.toUpperCase(),tipo));
 		}else {
 			autores_semejantes.addAll(User_servi.findAll());//esto se hace para pedir todos los autores
@@ -38,9 +38,9 @@ public class dotuser implements Serializable{
 			dot.setCorreo(autores_semejantes.get(contador).getCorreo().toLowerCase());
 			dot.setFecha_nacimiento(autores_semejantes.get(contador).getFecha_nacimiento());
 			dot.setTarjeta(Tarjeta_servi.findTarjetaUserString(autores_semejantes.get(contador).getId()));
-			Autor.add(dot);
+			User.add(dot);
 		}
-		return Autor;
+		return User;
 	}
 	public dotuser() {//constructor vacio
 		

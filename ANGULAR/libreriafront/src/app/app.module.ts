@@ -7,8 +7,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
-import { LibroModule } from './libro/libro.module';
-import { AutorModule } from './autor/autor.module';
+import { TarjetaModule } from './tarjeta/tarjeta.module';
+import { UserModule } from './user/user.module';
 import { InicioModule } from './inicio/inicio.module';
 
 //import { EditorialcontrolComponent } from './editorial/editorialcontrol/editorialcontrol.component';   EditorialcontrolComponent
@@ -26,8 +26,8 @@ import { InicioModule } from './inicio/inicio.module';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    LibroModule ,
-    AutorModule,
+    TarjetaModule ,
+    UserModule,
     InicioModule
   ],
   providers: [],

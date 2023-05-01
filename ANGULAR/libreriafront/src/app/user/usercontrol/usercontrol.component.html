@@ -1,15 +1,9 @@
-
-<h2>user</h2>
-
-
+<h2>Usuario</h2>
 <div class="formulario">
-  <form [formGroup]="autorForm" (ngSubmit)="guardar()">
-
-
+  <form [formGroup]="userForm" (ngSubmit)="guardar()">
     <div class="form-group">
       <label>Nombre completo</label>
       <input type="text" formControlName="nombre" class="form-control">
-
       <div class="alert-danger" *ngIf="nombre?.invalid && (nombre?.dirty || nombre?.touched)">
         <div class="container-error-message" *ngIf="nombre?.errors?.required">
           Nombre es requerido
@@ -22,9 +16,7 @@
           nombre solo debe tener letras.
         </div>
       </div>
-
     </div>
-
     <div class="form-group">
       <label>Documento de identidad</label>
       <input type="text" formControlName="d_identidad" class="form-control">
@@ -36,7 +28,6 @@
         <div class="container-error-message" *ngIf="d_identidad?.errors?.maxlength">
           maximo 12 digitos.
         </div>
-
         <div class="container-error-message" *ngIf="d_identidad?.errors?.pattern">
            Solo debe tener numeros.
         </div>
@@ -71,7 +62,7 @@
     </div>
 
 
-    <button type="submit" class="btn btn-primary">Guardar autor</button>
+    <button type="submit" class="btn btn-primary">Guardar Usuario</button>
 
   </form>
 </div>
@@ -86,21 +77,16 @@
     </select>
 </div>
 <div class="formulario">
-  <form [formGroup]="autorForm" (ngSubmit)="buscarAutor()">
+  <form [formGroup]="userForm" (ngSubmit)="buscarUser()">
     <div class="form-group">
-
-
       <input type="text" formControlName="nombre" class="form-control">
     </div>
-
-
-
-    <button type="submit" class="btn btn-primary">Buscar autor</button>
+    <button type="submit" class="btn btn-primary">Buscar usuario</button>
   </form>
 </div>
 
 <div class="formularioRegistro">
-  <p>Buscar user</p>
+  <p>Buscar usuario</p>
   <table class="table">
     <thead>
       <tr>
@@ -109,8 +95,7 @@
         <th>Nombre</th>
         <th>fecha nacimiento</th>
         <th>correo</th>
-        <th>tarjetas escritos</th>
-
+        <th>tarjetas asociadas</th>
       </tr>
     </thead>
     <tbody>
@@ -120,7 +105,7 @@
         <td>{{item.nombre}}</td>
         <td>{{item.fecha_nacimiento}}</td>
         <td>{{item.correo}}</td>
-        <td>{{item.libros_escritos}}</td>
+        <td>{{item.tarjetasUsuario}}</td>
         <td>
         </td>
       </tr>
@@ -129,7 +114,7 @@
 </div>
 
 <div class="formularioRegistro">
-  <p>Autores registrados</p>
+  <p>Usuarios registrados</p>
   <table class="table">
     <thead>
       <tr>
@@ -138,7 +123,7 @@
         <th>Nombre</th>
         <th>fecha nacimiento</th>
         <th>correo</th>
-        <th>tarjetas escritos</th>
+        <th>tarjetas asociadas</th>
         <th>Opciones</th>
       </tr>
     </thead>
@@ -149,7 +134,7 @@
         <td>{{item.nombre}}</td>
         <td>{{item.fecha_nacimiento}}</td>
         <td>{{item.correo}}</td>
-        <td>{{item.libros_escritos}}</td>
+        <td>{{item.tarjetasUsuario}}</td>
         <td>
           <button type="button" class="btn btn-danger" (click)="eliminar(item)">Eliminar</button>
         </td>

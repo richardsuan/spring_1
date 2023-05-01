@@ -24,58 +24,49 @@ import com.credibanco.assessment.library.services.tarjeta_servi;
 @RestController
 public class userRest {
 	@Autowired
-	private user_servi Autor_servi;
+	private user_servi User_servi;
 	@Autowired
-	private tarjeta_servi Libro_servi;
-	@RequestMapping("/autores/")//listar autores
+	private tarjeta_servi Tarjeta_servi;
+	@RequestMapping("/users/")//listar autores
 	@GetMapping	
-	private ResponseEntity <List<dotuser>> getAllautores(){//este metodo trae a todos los autores que estan en la base de datos
+	private ResponseEntity <List<dotuser>> getAllUsers(){//este metodo trae a todos los autores que estan en la base de datos
 		System.out.println("hicieron get");
 		dotuser autor_salida = new dotuser();
-		return ResponseEntity.ok(autor_salida.creardot(null,null,Autor_servi,Libro_servi));//cambiar
-		
+		return ResponseEntity.ok(autor_salida.creardot(null,null,User_servi,Tarjeta_servi));//cambiar
 	}
 	
-	@RequestMapping(value="/autor/buscar")//buscar por nombre 
+	@RequestMapping(value="/user/buscar")//buscar por nombre
 	@GetMapping
-	private ResponseEntity<List<dotuser>> getoneAutor(@RequestParam("valor")  String Valor_busqueda, @RequestParam("tipo")  String tipo){
+	private ResponseEntity<List<dotuser>> getOneUser(@RequestParam("valor")  String Valor_busqueda, @RequestParam("tipo")  String tipo){
 		//List<autor> Autor =new ArrayList<>();
-		System.out.println("hicieron get en /autor/buscar/ \n");
+		System.out.println("hicieron get en /user/buscar/ \n");
 		
 		dotuser autor_salida = new dotuser();//aqui paso nombre como valor
 
-		return ResponseEntity.ok(autor_salida.creardot(Valor_busqueda,tipo,Autor_servi,Libro_servi));//cambiar
+		return ResponseEntity.ok(autor_salida.creardot(Valor_busqueda,tipo,User_servi,Tarjeta_servi));//cambiar
 		//return ResponseEntity.ok(dot);
 		
 	}
 	
 	//
-	@RequestMapping(value="/autor/eliminar/{id}")
+	@RequestMapping(value="/user/eliminar/{id}")
 	@DeleteMapping
-	private  ResponseEntity<Boolean> eliminarAutor(@PathVariable Long id){
-		Autor_servi.deleteById(id);
-		return ResponseEntity.ok(!(Autor_servi.findById(id)!=null));
+	private  ResponseEntity<Boolean> eliminarUser(@PathVariable Long id){
+		User_servi.deleteById(id);
+		return ResponseEntity.ok(!(User_servi.findById(id)!=null));
 	}
 
-	@RequestMapping("/autor/agregar/")
+	@RequestMapping("/user/agregar/")
 	@PostMapping
-	private ResponseEntity<user> saveAutor(@RequestBody user user){//sirve para guardarlas personas y la anotacion sirve para hacer que el body sea obligatorio
-		
+	private ResponseEntity<user> saveUser(@RequestBody user user){//sirve para guardarlas personas y la anotacion sirve para hacer que el body sea obligatorio
 		try {
 			user.setNombre(user.getNombre().toUpperCase());
-			user autorguardado = Autor_servi.save(user);
-			
-			
-			return  ResponseEntity.created(new URI("/autor/agregar/"+ autorguardado.getId())).body(autorguardado);
+			user autorguardado = User_servi.save(user);
+			return  ResponseEntity.created(new URI("/user/agregar/"+ autorguardado.getId())).body(autorguardado);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
-		
 	}
-	//
-	
-	
-	
 }
 

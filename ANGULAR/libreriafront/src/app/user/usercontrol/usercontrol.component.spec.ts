@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AutorcontrolComponent } from './autorcontrol.component';
+import { UsercontrolComponent } from './usercontrol.component';
 
-describe('AutorcontrolComponent', () => {
-  let component: AutorcontrolComponent;
-  let fixture: ComponentFixture<AutorcontrolComponent>;
+describe('UsercontrolComponent', () => {
+  let component: UsercontrolComponent;
+  let fixture: ComponentFixture<UsercontrolComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AutorcontrolComponent ]
+      declarations: [ UsercontrolComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AutorcontrolComponent);
+    fixture = TestBed.createComponent(UsercontrolComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

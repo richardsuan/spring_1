@@ -24,7 +24,7 @@ public class tarjeta_servi implements tarjeta_rep {
 		List<tarjeta> tarjetas =new ArrayList<>();
 		int contador=0;
 		for (contador=0; contador< t_tarjetas.size(); contador++) {
-			if(t_tarjetas.get(contador).getMy_autor()==id) {
+			if(t_tarjetas.get(contador).getMyUser()==id) {
 				tarjetas.add(t_tarjetas.get(contador));
 			}
 		}
@@ -32,13 +32,10 @@ public class tarjeta_servi implements tarjeta_rep {
 	}
 	public String findTarjetaUserString (Long id_autor){
 		String libros =" ";
-		
 		List<tarjeta> t_tarjetas = tarjeta_rep.findAll();
-		
-		
 		int contador=0;
 		for (contador=0; contador< t_tarjetas.size(); contador++) {
-			if(t_tarjetas.get(contador).getMy_autor()==id_autor) {
+			if(t_tarjetas.get(contador).getMyUser()==id_autor) {
 					
 					libros=libros+" "+ t_tarjetas.get(contador).getTitulo();
 					System.out.println(libros);
@@ -65,7 +62,6 @@ public class tarjeta_servi implements tarjeta_rep {
 		List<tarjeta> tarjeta_salida =new ArrayList<>();
 		int contador=0;
 		for(contador=0; contador< tarjetas.size(); contador++) {
-			//System.out.println("Esto sale en pantalla\n"+autores.get(contador).getNombre());
 			if(tarjetas.get(contador).getTitulo().contains(titulo)) {
 				tarjeta_salida.add(tarjetas.get(contador));
 			}

@@ -1,19 +1,13 @@
 <h2>tarjeta</h2>
-
-
 <div class="formulario">
-  <form [formGroup] ="libroForm" (ngSubmit)="guardar()">
-
-
+  <form [formGroup] ="tarjetaForm" (ngSubmit)="guardar()">
     <div class="form-group">
       <label>Titulo</label>
       <input type="text" formControlName="titulo" class="form-control">
-
       <div class="alert-danger" *ngIf="titulo?.invalid && (titulo?.dirty || titulo?.touched)">
         <div class="container-error-message" *ngIf="titulo?.errors?.required">
           El Titulo es requerido
         </div>
-
         <div class="alert-danger" *ngIf="titulo?.invalid && (titulo?.dirty || titulo?.touched)">
           <div class="container-error-message" *ngIf="titulo?.errors?.maxlength">
             Maximo 100 caracteres
@@ -21,8 +15,6 @@
         </div>
       </div>
     </div>
-
-
     <div class="form-group">
       <label>Año</label>
       <input type="text"  formControlName="ano" class="form-control">
@@ -30,20 +22,16 @@
         <div class="container-error-message" *ngIf="ano?.errors?.required">
           El año es requerido
         </div>
-
         <div class="alert-danger" *ngIf="ano?.invalid && (ano?.dirty || ano?.touched)">
           <div class="container-error-message" *ngIf="ano?.errors?.maxlength">
             Maximo 4 digitos
           </div>
         </div>
-
         <div class="container-error-message" *ngIf="ano?.errors?.pattern">
           Ingrese solo numeros.
        </div>
-
       </div>
     </div>
-
   <div class="form-group">
     <label>Genero</label>
     <select formControlName="genero" class="form-control">
@@ -57,8 +45,6 @@
       </div>
     </div>
   </div>
-
-
     <div class="form-group">
       <label>Numero de paginas</label>
       <input type="text" formControlName="paginas" class="form-control">
@@ -81,34 +67,21 @@
     </div>
 
     <div class="form-group">
-      <label>Id del autor</label>
-      <select  formControlName="my_autor" class="form-control">
-        <option [ngValue]="id_autores.id"*ngFor="let id_autores of idAutores">{{id_autores.nombre}}</option>
+      <label>Id del Usuario</label>
+      <select  formControlName="myUser" class="form-control">
+        <option [ngValue]="id_users.id"*ngFor="let id_users of idUsers">{{id_users.d_identidad}}</option>
       </select>
 
     </div>
-    <!--
-    <div class="form-group">
-      <label>Id del autor</label>
-      <input type="text" formControlName="my_autor" class="form-control">
-      <div class="alert-danger" *ngIf="my_autor?.invalid && (my_autor?.dirty || my_autor?.touched)">
-        <div class="container-error-message" *ngIf="my_autor?.errors?.required">
-          El Id del autor es requerido
-        </div>
-
-
-
-      </div>
-    </div>-->
     <button type="submit" class="btn btn-primary" >Guardar</button>
 
   </form>
 </div>
 
 <div class="formulario">
-  <form [formGroup] ="libroForm" (ngSubmit)="buscarLibro()">
+  <form [formGroup] ="tarjetaForm" (ngSubmit)="buscarTarjeta()">
     <div class="form-group">
-      <label>Buscar libro</label>
+      <label>Buscar Tarjeta</label>
       <input type="text" formControlName="titulo" class="form-control">
     </div>
 
@@ -120,7 +93,7 @@
 
 
 <div class="formularioRegistro">
-  <p>Buscar libro</p>
+  <p>Buscar Tarjeta</p>
   <table class="table">
     <thead>
       <tr>
@@ -129,28 +102,22 @@
         <th>Genero</th>
         <th># de paginas</th>
         <th>user</th>
-        <th>Editorial</th>
-
-
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of libro">
+      <tr *ngFor="let item of tarjeta">
         <td>{{item.titulo}}</td>
         <td>{{item.ano}}</td>
         <td>{{item.genero}}</td>
         <td>{{item.paginas}}</td>
-        <td>{{item.my_autor}}</td>
-        <td>{{item.my_editorial}}</td>
-
-
+        <td>{{item.myUser}}</td>
       </tr>
     </tbody>
   </table>
 </div>
 
 <div class="formularioRegistro">
-  <p>Buscar libro</p>
+  <p>Listar tarjeta</p>
   <table class="table">
     <thead>
       <tr>
@@ -160,19 +127,16 @@
         <th># de paginas</th>
         <th>user</th>
         <th>Editorial</th>
-
-
-
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of libros">
+      <tr *ngFor="let item of tarjetas">
         <td>{{item.titulo}}</td>
         <td>{{item.ano}}</td>
         <td>{{item.genero}}</td>
         <td>{{item.paginas}}</td>
-        <td>{{item.my_autor}}</td>
-        <td>{{item.my_editorial}}</td>
+        <td>{{item.myUser}}</td>
+
         <td>
           <button type="button" class="btn btn-danger" (click)="eliminar(item)">Eliminar</button>
         </td>

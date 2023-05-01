@@ -1,6 +1,7 @@
 package com.credibanco.assessment.library.services;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import com.credibanco.assessment.library.model.user;
@@ -59,13 +60,12 @@ public class user_servi implements user_rep {
 	}
 	public String findAutorstring (Long id_libro){
 		String autor =" ";
-		
 		List<user> t_autores = user_rep.findAll();
-		
-		
 		int contador=0;
+		System.out.println("********** findAutorString long id :"+ id_libro);
 		for (contador=0;contador<t_autores.size();contador++) {
-			if(t_autores.get(contador).getId()==id_libro) {
+			System.out.println("********** findAutorString :"+t_autores.get(contador).getNombre());
+			if(Objects.equals(t_autores.get(contador).getId(), id_libro)) {
 				autor=autor+" "+t_autores.get(contador).getNombre();
 			}
 		}

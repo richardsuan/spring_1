@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AutorService } from 'src/app/services/autor/autor.service';
+import { UserService } from 'src/app/services/user/user.service';
 @Component({
-  selector: 'app-autorcontrol',
-  templateUrl: './autorcontrol.component.html',
-  styleUrls: ['./autorcontrol.component.css']
+  selector: 'app-usercontrol',
+  templateUrl: './usercontrol.component.html',
+  styleUrls: ['./usercontrol.component.css']
 })
-export class AutorcontrolComponent implements OnInit {
+export class UsercontrolComponent implements OnInit {
   private emailPattern: any = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  autorForm!: FormGroup;
+  userForm!: FormGroup;
   persona: any;
   personas: any;
   verSeleccion: any;
@@ -19,27 +19,26 @@ export class AutorcontrolComponent implements OnInit {
     {name: '# de Documento', valor : '3'},
     {name: 'NOMBRE', valor : '4'},
     {name: 'CORREO', valor : 7},
-
   ];
   estados: any;
   constructor(
     public fb: FormBuilder,
-    public autorService: AutorService
+    public usuarioService: UserService
   ) {
 
    }
 
   ngOnInit(): void {
-    this.autorForm = this.fb.group({
+    this.userForm = this.fb.group({
       id : [''],
       d_identidad : ['', [Validators.required, Validators.maxLength(12), Validators.pattern('^[0-9]*$')]],
       nombre : ['', [Validators.required, Validators.minLength(5), Validators.maxLength(400), Validators.pattern('[a-zA-Z ]*')]],
       // ,Validators.maxLength(400),Validators.pattern("[a-zA-Z ]*")
       fecha_nacimiento : ['', Validators.required],
       correo : ['', [Validators.required, Validators.pattern(this.emailPattern), Validators.maxLength(400)]] ,
-      libros_escritos : ['' ]
+      tarjetasUsuario : ['' ]
     });
-    this.autorService.getAllAutores().subscribe (res => {
+    this.usuarioService.getAllUser().subscribe (res => {
       this.personas = res;
       console.log(res);
     },
@@ -48,20 +47,20 @@ export class AutorcontrolComponent implements OnInit {
 
   }
   guardar(): void {
-    if (this.autorForm.valid) {
-        this.autorService.saveAutor(this.autorForm.value).subscribe(res => {
-        this.autorForm.reset();
+    if (this.userForm.valid) {
+        this.usuarioService.saveUser(this.userForm.value).subscribe(res => {
+        this.userForm.reset();
         this.personas.push(res);
       },
         error => { console.error(error); }
       );
     }else{
         console.log('error');
-        console.log(this.autorForm.value);
+        console.log(this.userForm.value);
     }
   }
   eliminar(persona: any): void {
-    this.autorService.deletePersona(persona).subscribe(res => {
+    this.usuarioService.deletePersona(persona).subscribe(res => {
     console.log(res);
     if (res === true){
       this.personas.pop(persona);
@@ -70,9 +69,9 @@ export class AutorcontrolComponent implements OnInit {
     error => { console.error(error); }
   );
 }
-  buscarAutor(): void {
+  buscarUser(): void {
 
-    this.autorService.getsimilarAutor(this.autorForm.get('nombre')?.value, this.verSeleccion).subscribe(res => {
+    this.usuarioService.getsimilarUser(this.userForm.get('nombre')?.value, this.verSeleccion).subscribe(res => {
     this.persona = res;
 
     console.log(res);
@@ -85,13 +84,13 @@ capturar() {
   console.log(this.opcionSeleccionado.valor);
 }
   get nombre() {
-    return this.autorForm.get('nombre');
+    return this.userForm.get('nombre');
   }
   get d_identidad() {
-    return this.autorForm.get('d_identidad');
+    return this.userForm.get('d_identidad');
   }
 
   get correo() {
-    return this.autorForm.get('correo');
+    return this.userForm.get('correo');
   }
 }

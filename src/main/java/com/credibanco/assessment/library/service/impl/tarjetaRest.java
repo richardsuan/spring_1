@@ -26,58 +26,54 @@ public class tarjetaRest {
 	private tarjeta_servi Libro_servi;
 	@Autowired
 	private user_servi Autor_servi;
-	@RequestMapping("/libros/")//listar libroes
+	@RequestMapping("/tarjetas/")//listar
 	@GetMapping	
 	private ResponseEntity <List<dotTarjeta>> getAll_libros(){//este metodo trae a todas las libroes
 		//System.out.println("hicieron get");
 		dotTarjeta dot_libro = new dotTarjeta();
-		return ResponseEntity.ok(dot_libro.creardot(null, Libro_servi, Autor_servi));
+		return ResponseEntity.ok(dot_libro.creardotTarjeta(null, Libro_servi, Autor_servi));
 		//return null;
 	}
 	//
-	@RequestMapping(value="/libro/buscar")//buscar por nombre 
+	@RequestMapping(value="/tarjeta/buscar")//buscar por nombre
 	@GetMapping
-	private ResponseEntity<List<dotTarjeta>> getoneLibro(@RequestParam("titulo")  String libro_busqueda){
+	private ResponseEntity<List<dotTarjeta>> getOnetarjet(@RequestParam("titulo")  String libro_busqueda){
 		System.out.println(libro_busqueda);
 		//List<autor> Autor =new ArrayList<>();
 		//System.out.println(libro_busqueda.getTitulo());
 		dotTarjeta dotlibros = new dotTarjeta();
-
-		return ResponseEntity.ok(dotlibros.creardot(libro_busqueda, Libro_servi,Autor_servi));//cambiar
-		//return ResponseEntity.ok(dot);
-		
+		return ResponseEntity.ok(dotlibros.creardotTarjeta(libro_busqueda, Libro_servi,Autor_servi));//cambiar
 	}
 	//
-	@RequestMapping(value="/libro/buscar2/{id}")
+	@RequestMapping(value="/tarjeta/buscar2/{id}")
 	@DeleteMapping
-	private  ResponseEntity<List<tarjeta>> buscar2Libro(@PathVariable Long id){
+	private  ResponseEntity<List<tarjeta>> buscar2Tarjet(@PathVariable Long id){
 		//Libro_servi.deleteById(id);
 		return ResponseEntity.ok((Libro_servi.findbookAutor(id)));
 	}
-
 	//
-	@RequestMapping("/libro/agregar/")
+	@RequestMapping("/tarjeta/agregar/")
 	@PostMapping
-	private ResponseEntity<tarjeta> saveLibro(@RequestBody tarjeta tarjeta){//sirve para guardar las libroes
-		
+	private ResponseEntity<tarjeta> saveTarjet(@RequestBody tarjeta tarjeta){//sirve para guardar las libroes
 		try {
 			tarjeta.setTitulo(tarjeta.getTitulo().toUpperCase());
+			tarjeta.setMyUser(tarjeta.getMyUser());
 			//Libro.setAutor_this(Libro.getAutor_this().getId());
 			tarjeta Autorguardado = Libro_servi.save(tarjeta);
 			System.out.println("hicieron post");
-			
-			return  ResponseEntity.created(new URI("/libro/agregar/"+Autorguardado.getId())).body(Autorguardado);
+			System.out.println("hicieron post"+tarjeta.getMyUser());
+			System.out.println("hicieron post"+tarjeta);
+
+			return  ResponseEntity.created(new URI("/tarjeta/agregar/"+Autorguardado.getId())).body(Autorguardado);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
-		
 	}
-	@RequestMapping(value="/libro/eliminar/{id}")
+	@RequestMapping(value="/tarjeta/eliminar/{id}")
 	@DeleteMapping
-	private  ResponseEntity<Boolean> eliminarLibro(@PathVariable Long id){
+	private  ResponseEntity<Boolean> eliminateTarjet(@PathVariable Long id){
 		Libro_servi.deleteById(id);
-		return ResponseEntity.ok(!(Libro_servi.findById(id)!=null));
+		return ResponseEntity.ok(Libro_servi.findById(id) == null);
 	}
-
 }
