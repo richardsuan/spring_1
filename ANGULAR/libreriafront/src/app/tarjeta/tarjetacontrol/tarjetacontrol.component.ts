@@ -12,14 +12,6 @@ export class TarjetacontrolComponent implements OnInit {
   tarjetas: any;
   tarjetaForm!: FormGroup;
   idUsers: any;
-  misGeneros = [
-    {name: ''},
-    {name: 'Narrativa'},
-    {name: 'Lirica'},
-    {name: 'Teatro'},
-    {name: 'Ensayo'},
-
-  ];
   constructor(
     public fb: FormBuilder,
     public tarjetaService: TarjetaService
@@ -29,13 +21,11 @@ export class TarjetacontrolComponent implements OnInit {
     this.tarjetaForm = this.fb.group({
       titulo : ['', [Validators.required, Validators.maxLength(100)]],
       ano : ['', [Validators.required, Validators.maxLength(4), Validators.pattern('^[0-9]*$')]],
-      genero : ['', [ Validators.required, Validators.pattern('[a-zA-Z]*')]],
-      paginas : ['', [ Validators.required, Validators.maxLength(4), Validators.pattern('^[0-9]*$')]],
+      numeroTarjeta : ['', [ Validators.required, Validators.maxLength(4), Validators.pattern('^[0-9]*$')]],
       myUser : ['', [ Validators.required, Validators.maxLength(4), Validators.pattern('^[0-9]*$')]]
     });
     this.tarjetaService.getAllTarjetas().subscribe (res => {
       this.tarjetas = res;
-
       console.log(res);
     },
       error => { console.error(error); }
@@ -81,7 +71,6 @@ export class TarjetacontrolComponent implements OnInit {
   );
     this.tarjetaService.getAllTarjetas().subscribe (res => {
         this.tarjetas = res;
-
         console.log(res);
       },
       error => { console.error(error); }
@@ -97,13 +86,10 @@ export class TarjetacontrolComponent implements OnInit {
     get genero() {
       return this.tarjetaForm.get('genero');
     }
-    get paginas() {
-      return this.tarjetaForm.get('paginas');
+    get numeroTarjeta() {
+      return this.tarjetaForm.get('numeroTarjeta');
     }
     get myUser() {
       return this.tarjetaForm.get('myUser');
-    }
-    generos(){
-      return this.misGeneros.values;
     }
 }

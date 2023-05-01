@@ -12,8 +12,7 @@ public class dotTarjeta implements Serializable {
 	private Long  id;
 	private String titulo;
 	private String ano;
-	private String genero;
-	private  int paginas;
+	private  int NumeroTarjeta;
 	private String  myUser;
 	
 public List<dotTarjeta> creardotTarjeta(String tarjeta_busqueda, tarjeta_servi tarjetaList_servi, user_servi Autor_servi  ){
@@ -32,8 +31,7 @@ public List<dotTarjeta> creardotTarjeta(String tarjeta_busqueda, tarjeta_servi t
 			dot.setId(tarjetas_semejantes.get(contador).getId());
 			dot.setTitulo(tarjetas_semejantes.get(contador).getTitulo().toUpperCase());
 			dot.setAno(tarjetas_semejantes.get(contador).getAno().toUpperCase());
-			dot.setGenero(tarjetas_semejantes.get(contador).getGenero().toUpperCase());
-			dot.setPaginas(tarjetas_semejantes.get(contador).getPaginas());
+			dot.setNumeroTarjeta(tarjetas_semejantes.get(contador).getNumeroTarjeta());
 			dot.setMyUser(Autor_servi.findAutorstring(tarjetas_semejantes.get(contador).getMyUser()));
 			tarjetaList.add(dot);
 		}
@@ -58,17 +56,11 @@ public List<dotTarjeta> creardotTarjeta(String tarjeta_busqueda, tarjeta_servi t
 	public void setAno(String ano) {
 		this.ano = ano;
 	}
-	public String getGenero() {
-		return genero;
+	public int getNumeroTarjeta() {
+		return NumeroTarjeta;
 	}
-	public void setGenero(String genero) {
-		this.genero = genero;
-	}
-	public int getPaginas() {
-		return paginas;
-	}
-	public void setPaginas(int paginas) {
-		this.paginas = paginas;
+	public void setNumeroTarjeta(int NumeroTarjeta) {
+		this.NumeroTarjeta = NumeroTarjeta;
 	}
 	public String getMyUser() {
 		return myUser;
@@ -76,16 +68,14 @@ public List<dotTarjeta> creardotTarjeta(String tarjeta_busqueda, tarjeta_servi t
 	public void setMyUser(String myUser) {
 		this.myUser = myUser;
 	}
-	public dotTarjeta(Long id, String titulo, String ano, String genero, int paginas, String myUser) {
+	public dotTarjeta(Long id, String titulo, String ano, String genero, int NumeroTarjeta, String myUser) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
 		this.ano = ano;
-		this.genero = genero;
-		this.paginas = paginas;
+		this.NumeroTarjeta = NumeroTarjeta;
 		this.myUser = myUser;
 	}
-	
 	public dotTarjeta() {
 		
 	}

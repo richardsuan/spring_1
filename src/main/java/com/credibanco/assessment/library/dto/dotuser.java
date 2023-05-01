@@ -13,10 +13,8 @@ public class dotuser implements Serializable{
 	private Long  d_identidad;
 	private String nombre;
 	private String  fecha_nacimiento;
-	private String lugar_nacimiento;
-	private String pais;
 	private String correo;
-	private String  tajeta;
+	private String  tarjetasUsuario;
 	
 	public List<dotuser> creardot(String valorBusqueda, String tipo, user_servi User_servi, tarjeta_servi Tarjeta_servi  ) {
 		//System.out.print("dot "+autor_busqueda+"\n");
@@ -58,20 +56,13 @@ public class dotuser implements Serializable{
 	public void setD_identidad(Long d_identidad) {
 		this.d_identidad = d_identidad;
 	}
-	public String getPais() {
-		return pais;
-	}
-	public void setPais(String pais) {
-		this.pais = pais;
-	}
 	public dotuser(String nombre, String fecha_nacimiento, String lugar_nacimiento, String correo,
-				   String tajeta) {
+				   String tarjetasUsuario) {
 		super();
 		this.nombre = nombre;
 		this.fecha_nacimiento = fecha_nacimiento;
-		this.lugar_nacimiento = lugar_nacimiento;
 		this.correo = correo;
-		this.tajeta = tajeta;
+		this.tarjetasUsuario = tarjetasUsuario;
 	}
 	//aqui se crean los get y set 
 	public String getNombre() {
@@ -86,19 +77,16 @@ public class dotuser implements Serializable{
 	public void setFecha_nacimiento(String fecha_nacimiento) {
 		this.fecha_nacimiento = fecha_nacimiento;
 	}
-	public String getLugar_nacimiento() {
-		return lugar_nacimiento;
-	}
 	public String getCorreo() {
 		return correo;
 	}
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
-	public String getLibros_escritos() {
-		return tajeta;
+	public String getTarjetasUsuario() {
+		return tarjetasUsuario;
 	}
-	public void setTarjeta(String tajeta) {
-		this.tajeta = tajeta;
+	public void setTarjeta(String tarjetasUsuario) {
+		this.tarjetasUsuario = tarjetasUsuario;
 	}
 }

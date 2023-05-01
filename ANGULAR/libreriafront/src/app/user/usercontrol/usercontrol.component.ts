@@ -70,11 +70,9 @@ export class UsercontrolComponent implements OnInit {
   );
 }
   buscarUser(): void {
-
     this.usuarioService.getsimilarUser(this.userForm.get('nombre')?.value, this.verSeleccion).subscribe(res => {
     this.persona = res;
-
-    console.log(res);
+    console.log('buscar user', res);
   },
     error => { console.error(error); }
   );

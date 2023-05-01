@@ -7,15 +7,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table (name="Libro")
+@Table (name="Tarjetas")
 public class tarjeta {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long  id;
 	private String titulo;
 	private String ano;
-	private String genero;
-	private  int paginas;
+	private  int NumeroTarjeta;
 	private Long  myUser;
 	public tarjeta() {
 		
@@ -45,20 +44,12 @@ public class tarjeta {
 		this.ano = ano;
 	}
 
-	public String getGenero() {
-		return genero;
+	public int getNumeroTarjeta() {
+		return NumeroTarjeta;
 	}
 
-	public void setGenero(String genero) {
-		this.genero = genero;
-	}
-
-	public int getPaginas() {
-		return paginas;
-	}
-
-	public void setPaginas(int paginas) {
-		this.paginas = paginas;
+	public void setNumeroTarjeta(int NumeroTarjeta) {
+		this.NumeroTarjeta = NumeroTarjeta;
 	}
 
 	public Long getMyUser() {
@@ -68,12 +59,11 @@ public class tarjeta {
 	public void setMyUser(Long myUser) {
 		this.myUser = myUser;
 	}
-	public tarjeta(String titulo, String ano, String genero, int paginas, Long myUser) {
+	public tarjeta(String titulo, String ano, String genero, int NumeroTarjeta, Long myUser) {
 		super();
 		this.titulo = titulo;
 		this.ano = ano;
-		this.genero = genero;
-		this.paginas = paginas;
+		this.NumeroTarjeta = NumeroTarjeta;
 		this.myUser = myUser;
 	}
 }

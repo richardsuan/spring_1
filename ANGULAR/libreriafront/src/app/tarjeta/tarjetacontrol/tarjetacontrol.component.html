@@ -2,7 +2,7 @@
 <div class="formulario">
   <form [formGroup] ="tarjetaForm" (ngSubmit)="guardar()">
     <div class="form-group">
-      <label>Titulo</label>
+      <label>Nombre tarjeta</label>
       <input type="text" formControlName="titulo" class="form-control">
       <div class="alert-danger" *ngIf="titulo?.invalid && (titulo?.dirty || titulo?.touched)">
         <div class="container-error-message" *ngIf="titulo?.errors?.required">
@@ -32,34 +32,21 @@
        </div>
       </div>
     </div>
-  <div class="form-group">
-    <label>Genero</label>
-    <select formControlName="genero" class="form-control">
-      <option *ngFor="let mis_generos of misGeneros" >
-        {{ mis_generos.name }}
-      </option>
-    </select>
-    <div class="alert-danger" *ngIf="genero?.invalid && (genero?.dirty || genero?.touched)">
-      <div class="container-error-message" *ngIf="genero?.errors?.required">
-        Selecione un genero
-      </div>
-    </div>
-  </div>
     <div class="form-group">
-      <label>Numero de paginas</label>
-      <input type="text" formControlName="paginas" class="form-control">
-      <div class="alert-danger" *ngIf="paginas?.invalid && (paginas?.dirty || paginas?.touched)">
-        <div class="container-error-message" *ngIf="paginas?.errors?.required">
-          El numero de paginas es requerido
+      <label>Numero de pan</label>
+      <input type="text" formControlName="numeroTarjeta" class="form-control">
+      <div class="alert-danger" *ngIf="numeroTarjeta?.invalid && (numeroTarjeta?.dirty || numeroTarjeta?.touched)">
+        <div class="container-error-message" *ngIf="numeroTarjeta?.errors?.required">
+          El numero de NumeroTarjeta es requerido
         </div>
 
-        <div class="alert-danger" *ngIf="paginas?.invalid && (paginas?.dirty || paginas?.touched)">
-          <div class="container-error-message" *ngIf="paginas?.errors?.maxlength">
+        <div class="alert-danger" *ngIf="numeroTarjeta?.invalid && (numeroTarjeta?.dirty || numeroTarjeta?.touched)">
+          <div class="container-error-message" *ngIf="numeroTarjeta?.errors?.maxlength">
             Maximo 4 digitos
           </div>
         </div>
 
-        <div class="container-error-message" *ngIf="paginas?.errors?.pattern">
+        <div class="container-error-message" *ngIf="numeroTarjeta?.errors?.pattern">
           Ingrese solo numeros.
        </div>
 
@@ -100,7 +87,7 @@
         <th>Titulo</th>
         <th>Año</th>
         <th>Genero</th>
-        <th># de paginas</th>
+        <th># de NumeroTarjeta</th>
         <th>user</th>
       </tr>
     </thead>
@@ -109,7 +96,7 @@
         <td>{{item.titulo}}</td>
         <td>{{item.ano}}</td>
         <td>{{item.genero}}</td>
-        <td>{{item.paginas}}</td>
+        <td>{{item.numeroTarjeta}}</td>
         <td>{{item.myUser}}</td>
       </tr>
     </tbody>
@@ -124,7 +111,7 @@
         <th>Titulo</th>
         <th>Año</th>
         <th>Genero</th>
-        <th># de paginas</th>
+        <th># de NumeroTarjeta</th>
         <th>user</th>
         <th>Editorial</th>
       </tr>
@@ -134,7 +121,7 @@
         <td>{{item.titulo}}</td>
         <td>{{item.ano}}</td>
         <td>{{item.genero}}</td>
-        <td>{{item.paginas}}</td>
+        <td>{{item.numeroTarjeta}}</td>
         <td>{{item.myUser}}</td>
 
         <td>

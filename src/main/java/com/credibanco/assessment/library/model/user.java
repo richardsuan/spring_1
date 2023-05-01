@@ -12,7 +12,7 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table (name="Autor")
+@Table (name="Usuarios")
 public class user {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,7 +21,7 @@ public class user {
 	private String nombre;
 	private String  fecha_nacimiento;
 	private String correo;
-	private String  libros_escritos;
+	private String  tarjetasUsuario;
 	//private String libros_escritos;
 	//esto se hace para hacer las relaciones 
 	
@@ -116,30 +116,29 @@ public class user {
 	}
 
 
-	public String getLibros_escritos() {
-		return libros_escritos;
+	public String gettarjetasUsuario() {
+		return tarjetasUsuario;
 	}
 
 
 
 
 
-	public void setLibros_escritos(String libros_escritos) {
-		this.libros_escritos = libros_escritos;
+	public void setTarjetasUsuario(String tarjetasUsuario) {
+		this.tarjetasUsuario = tarjetasUsuario;
 	}
 
 
 
 
 
-	public user(Long d_identidad, String nombre, String fecha_nacimiento, String lugar_nacimiento, String correo,
-				String pais, String libros_escritos) {
+	public user(Long d_identidad, String nombre, String fecha_nacimiento, String lugar_nacimiento, String correo, String tarjetasUsuario) {
 		super();
 		this.d_identidad = d_identidad;
 		this.nombre = nombre;
 		this.fecha_nacimiento = fecha_nacimiento;
 		this.correo = correo;
-		this.libros_escritos = libros_escritos;
+		this.tarjetasUsuario = tarjetasUsuario;
 	}
 	
 	
